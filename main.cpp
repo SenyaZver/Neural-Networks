@@ -9,14 +9,16 @@
 #include "Common.h"
 #include "Tests/ConvolutionTest.h"
 #include "Tests/PerceptronTest.h"
+#include "Tests/ConvolutionalNEAT_Test.h"
 
 
 int main() {
 
-	convTest();
+//	convTest();
 
 //	PerceptronTest();
 
+	convNEAT_test();
 
 }
 
