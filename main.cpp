@@ -10,16 +10,17 @@
 #include "Tests/ConvolutionTest.h"
 #include "Tests/PerceptronTest.h"
 #include "Tests/ConvolutionalNEAT_Test.h"
+#include "Tests/NEAT_layer_Test.h"
+#include "Tests/NEATcopyTest.h"
 
 
 int main() {
 
 //	convTest();
-
 //	PerceptronTest();
-
-	convNEAT_test();
-
+//	convNEAT_test();
+//	NEAT_layer_Test();
+	NEATcopyTest();
 }
 
 

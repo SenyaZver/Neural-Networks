@@ -37,7 +37,7 @@ public:
 
 
 
-	std::vector<double> propagate(matrix const input) {
+	std::vector<double> propagate(matrix& const input) {
 		return this->reshape(input);
 	}
 

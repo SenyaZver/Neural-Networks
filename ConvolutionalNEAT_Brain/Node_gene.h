@@ -27,8 +27,6 @@ public:
 	}
 
 
-
-
 	void setValue(double value);
 	double getValue() const;
 
@@ -38,6 +36,8 @@ public:
 
 	std::set<Node_gene*> getInputGenes() const;
 	std::set<Node_gene*> getOutputGenes() const;
+
+	bool isConnected(Node_gene* gene);
 
 	double fastSigmoid(double value);
 

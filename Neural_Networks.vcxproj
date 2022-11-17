@@ -137,12 +137,15 @@
     <ClInclude Include="ConvolutionalBrain\DenseLayer.h" />
     <ClInclude Include="ConvolutionalBrain\LoadingConvData.h" />
     <ClInclude Include="ConvolutionalBrain\ReshapeLayer.h" />
+    <ClInclude Include="ConvolutionalNEAT_Brain\ConvNEAT_Brain.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\NEAT_layer.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\Node_gene.h" />
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h" />
     <ClInclude Include="PercepetronBrain\PerceptronBrain.h" />
     <ClInclude Include="Tests\ConvolutionalNEAT_Test.h" />
     <ClInclude Include="Tests\ConvolutionTest.h" />
+    <ClInclude Include="Tests\NEATcopyTest.h" />
+    <ClInclude Include="Tests\NEAT_layer_Test.h" />
     <ClInclude Include="Tests\PerceptronTest.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>

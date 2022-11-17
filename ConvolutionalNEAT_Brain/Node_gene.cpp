@@ -42,6 +42,18 @@ std::set<Node_gene*> Node_gene::getOutputGenes() const
 	return *outputGenes;
 }
 
+bool Node_gene::isConnected(Node_gene* gene)
+{
+	std::set<Node_gene*> outputGenes = this->getOutputGenes();
+	for (auto connectedGene : outputGenes) {
+		if (connectedGene == gene) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void Node_gene::setInputs(std::set<Connection_gene*>& inputs) {
 	this->inputs = inputs;
 }

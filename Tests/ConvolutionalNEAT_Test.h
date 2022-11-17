@@ -2,29 +2,28 @@
 #include <vector>
 #include "../ConvolutionalNEAT_Brain/NEAT_layer.h"
 #include <iostream>
+#include "../ConvolutionalNEAT_Brain/ConvNEAT_Brain.h"
 
 
 
 void convNEAT_test() {
 
-	NEAT_layer* example = new NEAT_layer();
-	example->createDefault(30, 10, 2);
+	size_t inputSize = 30;
+	size_t filterSize = 5;
+	size_t hiddenLayerSize = 20;
+	size_t outputSize = 5;
 
-
-	//input example
-	std::vector<double> input{ 55, 55, 57, 59, 61, 63, 66, 69, 72, 76, 80, 84, 88, 88, 56, 30, 35, 40, 48, 57, 61, 61, 59, 59, 57, 57, 56, 56, 56, 55 };
-	//for (int i = 0; i < 30; i++) {
-	//	(*input)[i] = i;
-	//}
-
-	std::vector<double> result = example->feedForward(&input);
-
-
-	std::cout << "result is ";
-	for (auto it : result) {
-		std::cout << it << " ";
+	//init input
+	auto input = createSquareMatrix(inputSize);
+	for (int i = 0; i < inputSize; i++) {
+		for (int j = 0; j < inputSize; j++) {
+			input[i][j] = 1;
+		}
 	}
 
-	//example->ConnectionPrint();
-	std::cout << std::endl;
+	std::vector<size_t> initParams = std::vector<size_t>{ inputSize, filterSize, hiddenLayerSize, outputSize };
+	ConvNEAT_Brain test;
+	test.generate(initParams);
+	auto result = test.feedForward(input, input, input);
+	printVector(result);
 }

@@ -50,8 +50,6 @@ public:
 
 
 
-
-
 	std::vector<double> feedForward(matrix& const input1,
 									 matrix& const input2, 
 									 matrix& const input3)

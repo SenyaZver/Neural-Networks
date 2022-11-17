@@ -2,17 +2,17 @@
 #include <algorithm>
 #include <stdlib.h>
 #include <iostream>
+#include "../Common.h"
 
 
 void NEAT_layer::addHiddenGene() {
 	std::vector<Node_gene*> allGenes;
 
 
-	allGenes.insert(allGenes.end(), inputGenes->begin(), inputGenes->end());
-	allGenes.insert(allGenes.end(), hiddenGenes->begin(), hiddenGenes->end());
+	allGenes.insert(allGenes.end(), inputGenes.begin(), inputGenes.end());
+	allGenes.insert(allGenes.end(), hiddenGenes.begin(), hiddenGenes.end());
 
-
-	int chosenGeneNumber = rand() % allGenes.size();		//choose random gene
+	int chosenGeneNumber = getRandomNumber(0, allGenes.size() - 1);//choose random gene	
 	Node_gene* inGene = allGenes[chosenGeneNumber];
 
 
@@ -20,9 +20,8 @@ void NEAT_layer::addHiddenGene() {
 	std::vector<Connection_gene*> connections(set.size());
 	std::copy(set.begin(), set.end(), connections.begin());		//creating a vector of gene's connections
 
-
-	int choosenConnectionNumber = rand() % connections.size();		//choose random outConnection of chosen gene		
-
+		
+	int choosenConnectionNumber = getRandomNumber(0, connections.size() - 1);  //choose random outConnection of chosen gene	
 
 	Connection_gene* connection = connections[choosenConnectionNumber];
 	Node_gene* outGene = connection->getOutGene();
@@ -35,51 +34,52 @@ void NEAT_layer::addHiddenGene() {
 	Node_gene* newGene = new Node_gene(0);
 	newGene->setOutput(outGene, weight, 20);
 	newGene->setInput(inGene, 1, 20);
-	hiddenGenes->push_back(newGene);
+	hiddenGenes.push_back(newGene);
 }
 void NEAT_layer::addConnection() {
 	std::vector<Node_gene*> allGenes;
 
 
-	allGenes.insert(allGenes.end(), inputGenes->begin(), inputGenes->end());
-	allGenes.insert(allGenes.end(), hiddenGenes->begin(), hiddenGenes->end());
+	allGenes.insert(allGenes.end(), inputGenes.begin(), inputGenes.end());
+	allGenes.insert(allGenes.end(), hiddenGenes.begin(), hiddenGenes.end());
 
 
-	int firstChosenNumber = rand() % allGenes.size();		//choose first random gene
+	int firstChosenNumber = getRandomNumber(0, allGenes.size() - 1);	//choose first random gene
 	Node_gene* firstGene = allGenes[firstChosenNumber];
 
-	int secondChosenNumber = rand() % allGenes.size();	//choose second random gene
+	int secondChosenNumber = getRandomNumber(0, allGenes.size() - 1);	//choose second random gene
 	Node_gene* secondGene = allGenes[secondChosenNumber];
 
 	std::set<Node_gene*> outputs = firstGene->getOutputGenes();
 
 
 	if (outputs.find(secondGene) != outputs.end()) {
-		double weight = rand() / (RAND_MAX + 1.);	//choose random number close to 1(actually it would be better to be close to 0
+		double weight = getRandomNumber(-1, 1);//choose random number close to 1(actually it would be better to be close to 0
 		firstGene->setOutput(secondGene, weight, 50);
-
-		//weight = rand() / (RAND_MAX + 1.);		//same
-		//secondGene->setInput(firstGene, weight, 50);
 	}
 
 }
-void NEAT_layer::changeWeightsRandomly() {
-	for (auto input : *inputGenes) {
+void NEAT_layer::changeWeightsRandomly(int chance) {
+	for (auto input : inputGenes) {
 		for (auto connection : input->getOutConnections()) {
-			if (rand() % 100 < 40) {
+
+			if (getRandomNumber(0, 100) < chance) {
 				double value = connection->getWeight();
-				value = value + rand() / (RAND_MAX + 1.);		//choose random number close to 1
+				value = value + getRandomNumber(-1, 1);		//choose random number close to 1
 				connection->setWeight(value);
 			}
+
 		}
 	}
-	for (auto gene : *hiddenGenes) {
+	for (auto gene : hiddenGenes) {
 		for (auto connection : gene->getOutConnections()) {
-			if (rand() % 100 < 40) {
+
+			if (getRandomNumber(0, 100) < chance) {
 				double value = connection->getWeight();
-				value = value + rand() / (RAND_MAX + 1.);		//choose random number close to 1
+				value = value + getRandomNumber(-1, 1);		//choose random number close to 1
 				connection->setWeight(value);
 			}
+
 		}
 	}
 }
@@ -88,7 +88,7 @@ void NEAT_layer::disableGenesRandomly() {
 }
 
 
-NEAT_layer::NEAT_layer(std::vector<Node_gene*>* inputGenes, std::vector<Node_gene*>* outputGenes, std::vector<Node_gene*>* hiddenGenes) {
+NEAT_layer::NEAT_layer(std::vector<Node_gene*> inputGenes, std::vector<Node_gene*> outputGenes, std::vector<Node_gene*> hiddenGenes) {
 	this->inputGenes = inputGenes;
 	this->outputGenes = outputGenes;
 	this->hiddenGenes = hiddenGenes;
@@ -98,48 +98,48 @@ NEAT_layer::NEAT_layer(std::vector<Node_gene*>* inputGenes, std::vector<Node_gen
 NEAT_layer::NEAT_layer()
 {
 
-	this->inputGenes = new std::vector<Node_gene*>;
-	this->outputGenes = new std::vector<Node_gene*>;
-	this->hiddenGenes = new std::vector<Node_gene*>;
+	this->inputGenes = std::vector<Node_gene*>();
+	this->outputGenes = std::vector<Node_gene*>();
+	this->hiddenGenes = std::vector<Node_gene*>();
 	fitnessScore = 0;
 }
 
 NEAT_layer::~NEAT_layer()
 {
-	for (auto gene : *inputGenes) {
+	for (auto gene : inputGenes) {
 		for (auto connection : gene->getOutConnections()) {
 			delete connection;
 		}
 	}
-	for (auto gene : *hiddenGenes) {
+	for (auto gene : hiddenGenes) {
 		for (auto connection : gene->getOutConnections()) {
 			delete connection;
 		}
 	}
 
-	for (auto gene : *inputGenes) {
+	for (auto gene : inputGenes) {
 		delete gene;
 	}
-	for (auto gene : *hiddenGenes) {
+	for (auto gene : hiddenGenes) {
 		delete gene;
 	}
-	for (auto gene : *outputGenes) {
+	for (auto gene : outputGenes) {
 		delete gene;
 	}
 
 
 }
 
-void NEAT_layer::mutate() {
+void NEAT_layer::mutate(int addConnectionChance, int addHiddenGeneChance, int changeWeightChance, int changeWeightLimit) {
 
-	if (rand() % 100 < 3) {				//3 percent chance to add a connection
+	if (getRandomNumber(0, 100) < addConnectionChance) { //preferably 3
 		this->addConnection();
 	}
-	if (rand() % 100 < 5) {				//5 percent chance to add a hidden gene
+	if (getRandomNumber(0, 100) < addHiddenGeneChance) { //preferably 5
 		this->addHiddenGene();
 	}
 
-	this->changeWeightsRandomly();
+	this->changeWeightsRandomly(changeWeightChance);
 }
 void NEAT_layer::setFitnessScore() {
 	//TODO
@@ -155,15 +155,13 @@ int NEAT_layer::getNormalisedFitnessScore() {
 
 //calculating the result
 std::vector<double> NEAT_layer::getOutput() {
-
-
 	std::vector<double> output;
 
-	std::set<Node_gene*> calculatedSet(this->inputGenes->begin(), this->inputGenes->end()); //vector->set;
+	std::set<Node_gene*> calculatedSet(this->inputGenes.begin(), this->inputGenes.end()); //vector->set;
 	std::set<Node_gene*> availableSet;
 
 	while (true) {
-
+		
 		for (Node_gene* calculatedNode : calculatedSet) {
 			for (Connection_gene* connection : calculatedNode->getOutConnections()) {
 				Node_gene* geneToAdd = connection->getOutGene();
@@ -202,7 +200,7 @@ std::vector<double> NEAT_layer::getOutput() {
 
 	}
 
-	for (auto result : *outputGenes) {
+	for (auto result : outputGenes) {
 		output.push_back(result->getValue());
 	}
 
@@ -215,61 +213,52 @@ void NEAT_layer::createDefault(int inputSize, int hiddenGenesAmount, int outputS
 {
 
 	for (int i = 0; i < inputSize; i++) {
-		inputGenes->push_back(new Node_gene(0));
+		inputGenes.push_back(new Node_gene(0));
 	}
 
 	for (int i = 0; i < outputSize; i++) {
-		outputGenes->push_back(new Node_gene(0));
+		outputGenes.push_back(new Node_gene(0));
 	}
 
 
 	for (int i = 0; i < hiddenGenesAmount; i++) {
 		Node_gene* hiddenNode = new Node_gene(0);
 
-		double weight = rand() / (RAND_MAX + 1.);
+		double weight = getRandomNumber(-1, 1);
 
 		int innovationNumber = 0;
-		for (auto input : *inputGenes) {
-			weight = rand() / (RAND_MAX + 1.);
+		for (auto input : inputGenes) {
+			weight = getRandomNumber(-1, 1);
 			hiddenNode->setInput(input, weight, innovationNumber);
 		}
 
-		weight = rand() / (RAND_MAX + 1.);
+		weight = getRandomNumber(-1, 1);
 
-		for (auto output : *outputGenes) {
-			weight = rand() / (RAND_MAX + 1.);
+		for (auto output : outputGenes) {
+			weight = getRandomNumber(-1, 1);
 			output->setInput(hiddenNode, weight, innovationNumber);
 		}
-		hiddenGenes->push_back(hiddenNode);
+		hiddenGenes.push_back(hiddenNode);
 	}
-	//std::cout << outputGenes->size() << std::endl;
-	//vs
-	//std::cout << outputGenes[0].size() << std::endl;
+
 }
 
 
 
-void NEAT_layer::setInput(std::vector<Node_gene*>* input) {
+void NEAT_layer::setInput(std::vector<Node_gene*> input) {
 	this->inputGenes = input;
 }
 
 
 
-std::vector<double> NEAT_layer::feedForward(std::vector<double>* input)
+std::vector<double> NEAT_layer::propogate(std::vector<double>& input)
 {
-
-	if (input->size() != this->inputGenes->size()) {
-		return std::vector<double>(outputGenes->size());
+	if (input.size() != this->inputGenes.size()) {
+		return std::vector<double>(outputGenes.size());
 	}
 
-	//for (int i = 0; i < image->size(); i++) {
-	//	inputGenes[i]->setValue(image[i]);
-	//}
-	int i = 0;
-	for (auto gene : *inputGenes) {
-		double value = (*input)[i];
-		gene->setValue(value);
-		i++;
+	for (int i = 0; i < input.size(); i++) {
+		inputGenes[i]->setValue(input[i]);
 	}
 
 	return this->getOutput();
@@ -277,12 +266,12 @@ std::vector<double> NEAT_layer::feedForward(std::vector<double>* input)
 
 
 
-void NEAT_layer::setOutput(std::vector<Node_gene*>* output) {
+void NEAT_layer::setOutput(std::vector<Node_gene*> output) {
 	this->outputGenes = output;
 }
 
 void NEAT_layer::ConnectionPrint() {
-	for (auto gene : *hiddenGenes) {
+	for (auto gene : hiddenGenes) {
 		for (auto connection : gene->getOutConnections()) {
 			std::cout << connection->getWeight() << std::endl;
 		}
@@ -291,80 +280,81 @@ void NEAT_layer::ConnectionPrint() {
 
 
 NEAT_layer* NEAT_layer::clone() {
-	std::vector<Node_gene*>* newInputGenes = new std::vector<Node_gene*>;
-	std::vector<Node_gene*>* newOutputGenes = new std::vector<Node_gene*>;
-	std::vector<Node_gene*>* newHiddenGenes = new std::vector<Node_gene*>;
+	std::vector<Node_gene*> newInputGenes = std::vector<Node_gene*>();
+	std::vector<Node_gene*> newOutputGenes = std::vector<Node_gene*>();
+	std::vector<Node_gene*> newHiddenGenes = std::vector<Node_gene*>();
 	NEAT_layer* copy = new NEAT_layer();
+
+
+
+	for (int i = 0; i < (this->inputGenes.size()); i++) {
+		Node_gene* inputNode = new Node_gene(0);
+		newInputGenes.push_back(inputNode);
+	}
+	for (int i = 0; i < (this->hiddenGenes.size()); i++) {
+		Node_gene* hiddenNode = new Node_gene(0);
+		newHiddenGenes.push_back(hiddenNode);
+	}
+	for (int i = 0; i < (this->outputGenes.size()); i++) {
+		Node_gene* outputNode = new Node_gene(0);
+		newOutputGenes.push_back(outputNode);
+	}
+
+
+	for (int i = 0; i < inputGenes.size(); i++) {
+		for (int j = 0; j < hiddenGenes.size(); j++) {
+			//chech if hiddenGene[j] is connected to inputgene[i]
+			auto temp = inputGenes[i]->getOutputGenes();
+
+			if (temp.find(hiddenGenes[j]) != temp.end()) {
+				double weight = 0;
+				for (auto connection : inputGenes[i]->getOutConnections()) {
+					if (connection->getOutGene() == hiddenGenes[j]) {
+						weight = connection->getWeight();
+					}
+				}
+				newInputGenes[i]->setOutput(newHiddenGenes[j], weight, 1337);
+			}
+		}
+	}
+
+	for (int i = 0; i < hiddenGenes.size(); i++) {
+		for (int j = 0; j < hiddenGenes.size(); j++) {
+
+			auto temp = hiddenGenes[i]->getOutputGenes();
+
+			//chech if hiddenGene[j] is connected to hiddengene[i]
+			if (temp.find(hiddenGenes[j]) != temp.end()) {
+				double weight = 0;
+				for (auto connection : hiddenGenes[i]->getOutConnections()) {
+					if (connection->getOutGene() == hiddenGenes[j]) {
+						weight = connection->getWeight();
+					}
+				}
+				newHiddenGenes[i]->setOutput(newHiddenGenes[j], weight, 1337);
+			}
+		}
+	}
+
+	for (int i = 0; i < hiddenGenes.size(); i++) {
+		for (int j = 0; j < outputGenes.size(); j++) {
+			auto temp = hiddenGenes[i]->getOutputGenes();
+			//chech if hiddenGene[j] is connected to outputgene[i]
+			if (temp.find(outputGenes[j]) != temp.end()) {
+				double weight = 0;
+				for (auto connection : hiddenGenes[i]->getOutConnections()) {
+					if (connection->getOutGene() == outputGenes[j]) {
+						weight = connection->getWeight();
+					}
+				}
+				newHiddenGenes[i]->setOutput(newOutputGenes[j], weight, 1337);
+			}
+		}
+	}
+
 	copy->inputGenes = newInputGenes;
 	copy->outputGenes = newOutputGenes;
 	copy->hiddenGenes = newHiddenGenes;
-
-
-	for (int i = 0; i < (this->inputGenes->size()); i++) {
-		Node_gene* inputNode = new Node_gene(0);
-		newInputGenes->push_back(inputNode);
-	}
-	for (int i = 0; i < (this->hiddenGenes->size()); i++) {
-		Node_gene* hiddenNode = new Node_gene(0);
-		newHiddenGenes->push_back(hiddenNode);
-	}
-	for (int i = 0; i < (this->outputGenes->size()); i++) {
-		Node_gene* outputNode = new Node_gene(0);
-		newOutputGenes->push_back(outputNode);
-	}
-
-
-	for (int i = 0; i < inputGenes[0].size(); i++) {
-		for (int j = 0; j < hiddenGenes[0].size(); j++) {
-			//chech if hiddenGene[j] is connected to inputgene[i]
-			auto temp = inputGenes[0][i]->getOutputGenes();
-
-			if (temp.find(hiddenGenes[0][j]) != temp.end()) {
-				double weight = 0;
-				for (auto connection : inputGenes[0][i]->getOutConnections()) {
-					if (connection->getOutGene() == hiddenGenes[0][j]) {
-						weight = connection->getWeight();
-					}
-				}
-				newInputGenes[0][i]->setOutput(newHiddenGenes[0][j], weight, 1337);
-			}
-		}
-	}
-
-	for (int i = 0; i < hiddenGenes[0].size(); i++) {
-		for (int j = 0; j < hiddenGenes[0].size(); j++) {
-
-			auto temp = hiddenGenes[0][i]->getOutputGenes();
-
-			//chech if hiddenGene[j] is connected to inputgene[i]
-			if (temp.find(hiddenGenes[0][j]) != temp.end()) {
-				double weight = 0;
-				for (auto connection : hiddenGenes[0][i]->getOutConnections()) {
-					if (connection->getOutGene() == hiddenGenes[0][j]) {
-						weight = connection->getWeight();
-					}
-				}
-				newHiddenGenes[0][i]->setOutput(newHiddenGenes[0][j], weight, 1337);
-			}
-		}
-	}
-
-	for (int i = 0; i < hiddenGenes[0].size(); i++) {
-		for (int j = 0; j < outputGenes[0].size(); j++) {
-			auto temp = hiddenGenes[0][i]->getOutputGenes();
-			//chech if hiddenGene[j] is connected to inputgene[i]
-			if (temp.find(outputGenes[0][j]) != temp.end()) {
-				double weight = 0;
-				for (auto connection : hiddenGenes[0][i]->getOutConnections()) {
-					if (connection->getOutGene() == outputGenes[0][j]) {
-						weight = connection->getWeight();
-					}
-				}
-				newHiddenGenes[0][i]->setOutput(newOutputGenes[0][j], weight, 1337);
-			}
-		}
-	}
-
 
 
 	return copy;
