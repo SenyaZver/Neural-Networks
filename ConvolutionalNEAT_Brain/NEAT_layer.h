@@ -55,6 +55,4 @@ public:
 
 	
 	void ConnectionPrint();
-
-
 };

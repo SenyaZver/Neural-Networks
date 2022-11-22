@@ -9,9 +9,8 @@
 #include "Common.h"
 #include "Tests/ConvolutionTest.h"
 #include "Tests/PerceptronTest.h"
-#include "Tests/ConvolutionalNEAT_Test.h"
-#include "Tests/NEAT_layer_Test.h"
-#include "Tests/NEATcopyTest.h"
+#include "Tests/newNeatTest.h"
+
 
 
 int main() {
@@ -20,7 +19,7 @@ int main() {
 //	PerceptronTest();
 //	convNEAT_test();
 //	NEAT_layer_Test();
-	NEATcopyTest();
+	newNeatTest();
 }
 
 

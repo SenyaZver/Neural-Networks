@@ -57,7 +57,7 @@
     <ClInclude Include="Tests\PerceptronTest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\ConvolutionalNEAT_Test.h">
+    <ClInclude Include="Tests\Old_NEAT_tests\ConvolutionalNEAT_Test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ConvolutionalNEAT_Brain\NEAT_layer.h">
@@ -72,10 +72,22 @@
     <ClInclude Include="ConvolutionalNEAT_Brain\ConvNEAT_Brain.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\NEAT_layer_Test.h">
+    <ClInclude Include="Tests\Old_NEAT_tests\NEAT_layer_Test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\NEATcopyTest.h">
+    <ClInclude Include="Tests\Old_NEAT_tests\NEATcopyTest.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\newNeatTest.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -102,6 +114,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="ConvolutionalNEAT_Brain\NEAT_layer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

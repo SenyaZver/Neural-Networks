@@ -155,6 +155,8 @@ int NEAT_layer::getNormalisedFitnessScore() {
 
 //calculating the result
 std::vector<double> NEAT_layer::getOutput() {
+	std::cout << "propogating" << std::endl;
+	this->ConnectionPrint();
 	std::vector<double> output;
 
 	std::set<Node_gene*> calculatedSet(this->inputGenes.begin(), this->inputGenes.end()); //vector->set;
@@ -271,11 +273,19 @@ void NEAT_layer::setOutput(std::vector<Node_gene*> output) {
 }
 
 void NEAT_layer::ConnectionPrint() {
+	int i = 0;
 	for (auto gene : hiddenGenes) {
-		for (auto connection : gene->getOutConnections()) {
-			std::cout << connection->getWeight() << std::endl;
-		}
+		i++;
 	}
+	std::cout << i << std::endl;
+	i = 0;
+	for (auto gene : inputGenes) {
+		i++;
+	}
+	std::cout << i << std::endl;
+	//for (auto gene : outputGenes) {
+	//	std::cout << gene->getOutConnections().size() << std::endl;
+	//}
 }
 
 
@@ -355,6 +365,7 @@ NEAT_layer* NEAT_layer::clone() {
 	copy->inputGenes = newInputGenes;
 	copy->outputGenes = newOutputGenes;
 	copy->hiddenGenes = newHiddenGenes;
+
 
 
 	return copy;

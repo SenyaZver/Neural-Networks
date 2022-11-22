@@ -131,6 +131,7 @@
     <ClInclude Include="BrainLoader.h" />
     <ClInclude Include="BrainSaver.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\Connection_gene.h" />
     <ClInclude Include="ConvolutionalBrain\ConvolutionalLayer.h" />
     <ClInclude Include="ConvolutionalBrain\ConvolutionBrain.h" />
@@ -140,22 +141,28 @@
     <ClInclude Include="ConvolutionalNEAT_Brain\ConvNEAT_Brain.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\NEAT_layer.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\Node_gene.h" />
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.h" />
+    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.h" />
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h" />
     <ClInclude Include="PercepetronBrain\PerceptronBrain.h" />
-    <ClInclude Include="Tests\ConvolutionalNEAT_Test.h" />
+    <ClInclude Include="Tests\newNeatTest.h" />
+    <ClInclude Include="Tests\Old_NEAT_tests\ConvolutionalNEAT_Test.h" />
     <ClInclude Include="Tests\ConvolutionTest.h" />
-    <ClInclude Include="Tests\NEATcopyTest.h" />
-    <ClInclude Include="Tests\NEAT_layer_Test.h" />
+    <ClInclude Include="Tests\Old_NEAT_tests\NEATcopyTest.h" />
+    <ClInclude Include="Tests\Old_NEAT_tests\NEAT_layer_Test.h" />
     <ClInclude Include="Tests\PerceptronTest.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\Connection_gene.cpp" />
     <ClCompile Include="ConvolutionalBrain\ConvolutionalLayer.cpp" />
     <ClCompile Include="ConvolutionalBrain\DenseLayer.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\NEAT_layer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\Node_gene.cpp" />
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp" />
+    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.cpp" />
     <ClCompile Include="PercepetronBrain\PerceptronBrain.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>

@@ -1,14 +1,12 @@
-﻿  NEAT_layer.cpp
+﻿  NEAT.cpp
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(22,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(32,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(15,60): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(15,23): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(24,70): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(24,30): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(47,61): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(47,24): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(50,62): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NEAT_layer.cpp(50,25): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(17,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(23,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(69,63): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(69,20): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(84,65): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(84,16): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
   main.cpp
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(22,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(32,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
@@ -30,30 +28,5 @@ C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainSaver.h(152,41)
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185): warning C4114: Множественное использование одного и того же квалификатора типа.
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185,13): warning C4114: Множественное использование одного и того же квалификатора типа.
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(190,33): warning C4114: Множественное использование одного и того же квалификатора типа.
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(66,54): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(67,23): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(68,23): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(22,1): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(35,1): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(45,62): warning C4244: аргумент: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(45,51): warning C4244: аргумент: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(45,40): warning C4244: аргумент: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=double
-          ]
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(45,29): warning C4244: аргумент: преобразование "_Ty" в "int", возможна потеря данных
-          with
-          [
-              _Ty=double
-          ]
   Создание кода...
   Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe
