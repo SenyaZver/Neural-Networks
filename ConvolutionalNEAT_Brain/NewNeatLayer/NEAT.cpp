@@ -85,7 +85,7 @@ void NEAT::addHiddenGene()
 			
 			size_t outputGeneNumber = outputsForChosenGene[temp];
 
-			double oldWeight = inputGene->disconnect(this->genes[outputGeneNumber]);
+			double oldWeight = Node::disconnect(*inputGene, this->genes[outputGeneNumber]);
 			
 
 

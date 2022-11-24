@@ -162,7 +162,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\Node_gene.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp" />
-    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.cpp" />
     <ClCompile Include="PercepetronBrain\PerceptronBrain.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>

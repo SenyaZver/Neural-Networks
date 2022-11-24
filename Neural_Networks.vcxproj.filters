@@ -119,9 +119,6 @@
     <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

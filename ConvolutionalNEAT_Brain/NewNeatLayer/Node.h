@@ -89,21 +89,21 @@ public:
 
 	}
 
-	double disconnect(Node& otherGene) {
+	static double disconnect(Node& input, Node& output) {
 		size_t thisConnectionIndex = -1;
 		size_t otherConnectionIndex = -1;
 
 		//this gene is an input, other is an output
-		for (size_t i = 0; i < otherGene.inputs.size(); i++) {
+		for (size_t i = 0; i < output.inputs.size(); i++) {
 
-			if (otherGene.inputs[i].input == this->number) {
+			if (output.inputs[i].input == input.number) {
 				otherConnectionIndex = i;
 			}
 		}
 
-		for (size_t i = 0; i < this->outputs.size(); i++) {
+		for (size_t i = 0; i < input.outputs.size(); i++) {
 
-			if (this->outputs[i].output == otherGene.number) {
+			if (input.outputs[i].output == output.number) {
 				thisConnectionIndex = i;
 			}
 		}
@@ -111,48 +111,20 @@ public:
 
 
 		if (thisConnectionIndex != -1 && otherConnectionIndex != -1) {
-			double weight = this->outputs[thisConnectionIndex].weight;
+			double weight = input.outputs[thisConnectionIndex].weight;
 
 
 
-			this->outputs.erase(this->outputs.begin() + thisConnectionIndex);
+			input.outputs.erase(input.outputs.begin() + thisConnectionIndex);
 
-			otherGene.inputs.erase(otherGene.inputs.begin() + otherConnectionIndex);
-
-			return weight;
-		}
-
-		//this gene is an output, other is an input
-		thisConnectionIndex = -1;
-		otherConnectionIndex = -1;
-
-
-
-		for (size_t i = 0; i < otherGene.outputs.size(); i++) {
-
-			if (otherGene.outputs[i].output == this->number) {
-				otherConnectionIndex = i;
-			}
-		}
-
-		for (size_t i = 0; i < this->inputs.size(); i++) {
-
-			if (this->inputs[i].input == otherGene.number) {
-				thisConnectionIndex = i;
-			}
-		}
-
-
-		if (thisConnectionIndex != -1 && otherConnectionIndex != -1) {
-			double weight = this->inputs[thisConnectionIndex].weight;
-
-			this->inputs.erase(this->inputs.begin() + thisConnectionIndex);
-			otherGene.outputs.erase(otherGene.outputs.begin() + otherConnectionIndex);
+			output.inputs.erase(output.inputs.begin() + otherConnectionIndex);
 
 			return weight;
 		}
 		return 0;
 	}
+
+	
 
 	void print() {
 		std::cout << "Gene " << this->getNumber() << std::endl;
