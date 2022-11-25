@@ -16,14 +16,15 @@ public:
 	std::vector<double> propogate(std::vector<double>& input);
 
 	void createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize);
-	void mutate(size_t addHiddenGeneChance, size_t addConnection, size_t weightChance, size_t weightChangeLimit);
+	void mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t weightChangeChance, size_t weightChangeLimit);
 
-//private:
+private:
 
 	void addHiddenGene();
 	void addConnection();
-	void changeWeightsRandomly(size_t chance);
+	void changeWeightsRandomly(size_t chance, double changeLimit);
 
+public:
 
 	void print();
 

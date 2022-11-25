@@ -1,10 +1,18 @@
 #include "NEAT.h"
 #include "../../Common.h"
 
+
+
+
 std::vector<double> NEAT::propogate(std::vector<double>& input)
 {
+	//TODO
 	return std::vector<double>();
 }
+
+
+
+
 
 void NEAT::createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize)
 {
@@ -47,9 +55,20 @@ void NEAT::createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize)
 
 }
 
-void NEAT::mutate(size_t addHiddenGeneChance, size_t addConnection, size_t weightChance, size_t weightChangeLimit)
+void NEAT::mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t weightChangeChance, size_t weightChangeLimit)
 {
-	
+
+	this->changeWeightsRandomly(weightChangeChance, weightChangeLimit);
+
+	size_t chance = getRandomNumber(0, 100);
+	if (chance < addHiddenGeneChance) {
+		this->addHiddenGene();
+	}
+	chance = getRandomNumber(0, 100);
+	if (chance < addConnectionChance) {
+		this->addConnection();
+	}
+
 }
 
 void NEAT::addHiddenGene()
@@ -106,10 +125,25 @@ void NEAT::addHiddenGene()
 
 void NEAT::addConnection()
 {
+	//TODO
 }
 
-void NEAT::changeWeightsRandomly(size_t chance)
+void NEAT::changeWeightsRandomly(size_t changeChance, double changeLimit)
 {
+	for (auto gene1 : genes) {
+		for (auto gene2 : genes) {
+			if (gene1.isConnectedTo( gene2.getNumber() )) {
+				size_t chance = getRandomNumber(0, 100);
+
+				if (chance < changeChance) {
+					double weightChange = getRandomNumber(-changeLimit, changeLimit);
+					Node::changeWeightBetween(gene1, gene2, weightChange);
+				}
+
+			}
+
+		}
+	}
 }
 
 void NEAT::print()

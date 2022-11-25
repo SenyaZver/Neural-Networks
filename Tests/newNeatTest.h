@@ -10,11 +10,7 @@ void newNeatTest() {
 	
 	test.print();
 
-	test.addHiddenGene();
 
-	std::cout << "NEW NEAT _________________________" << std::endl;
-
-	test.print();
 
 
 }

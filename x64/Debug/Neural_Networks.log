@@ -1,13 +1,4 @@
-﻿  NEAT.cpp
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(22,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(32,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(17,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(23,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(69,63): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(69,20): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(84,65): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp(84,16): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
-  main.cpp
+﻿  main.cpp
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(22,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(32,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionalLayer.h(28,35): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
@@ -28,5 +19,4 @@ C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainSaver.h(152,41)
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185): warning C4114: Множественное использование одного и того же квалификатора типа.
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185,13): warning C4114: Множественное использование одного и того же квалификатора типа.
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(190,33): warning C4114: Множественное использование одного и того же квалификатора типа.
-  Создание кода...
   Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe

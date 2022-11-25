@@ -5,12 +5,9 @@
 
 class Node
 {
-	//TODO remove
-public:
-	//
 	size_t number;
 	double currentValue;
-	
+
 	std::vector<Connection> inputs = std::vector<Connection>();
 	std::vector<Connection> outputs = std::vector<Connection>();
 public:
@@ -85,9 +82,30 @@ public:
 		this->currentValue = currentValue / (1 + abs(currentValue));
 	}
 
-	double getWeight(Node& otherGene) {
+	
+
+
+	static void changeWeightBetween(Node& input, Node& output, double weightChange) {
+		if (!input.isConnectedTo(output.number)) {
+			return;
+		}
+
+		for (auto connection : input.outputs) {
+			if (connection.output == output.number) {
+				connection.weight += weightChange;
+			}
+		}
+
+
+		for (auto connection : output.inputs) {
+			if (connection.input == input.number) {
+				connection.weight += weightChange;
+			}
+		}
+
 
 	}
+
 
 	static double disconnect(Node& input, Node& output) {
 		size_t thisConnectionIndex = -1;
