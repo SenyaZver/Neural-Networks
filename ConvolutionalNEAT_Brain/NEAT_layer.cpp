@@ -155,8 +155,6 @@ int NEAT_layer::getNormalisedFitnessScore() {
 
 //calculating the result
 std::vector<double> NEAT_layer::getOutput() {
-	std::cout << "propogating" << std::endl;
-	this->ConnectionPrint();
 	std::vector<double> output;
 
 	std::set<Node_gene*> calculatedSet(this->inputGenes.begin(), this->inputGenes.end()); //vector->set;

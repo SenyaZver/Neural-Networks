@@ -1,13 +1,83 @@
 #include "NEAT.h"
 #include "../../Common.h"
+#include <set>
 
 
 
 
 std::vector<double> NEAT::propogate(std::vector<double>& input)
 {
-	//TODO
-	return std::vector<double>();
+	if (input.size() != this->inputIndexes.size()) {
+		std::cout << "NEAT input size is wrong" << std::endl;
+		return std::vector<double>();
+	}
+
+	for (size_t i = 0; i < input.size(); i++) {
+		this->genes[i].setValue(input[i]);
+	}
+
+	std::set<size_t> calculatedSet = std::set<size_t>(this->inputIndexes.begin(), this->inputIndexes.end());
+	std::set<size_t> availableSet;
+
+	while (true) {
+		for (auto calculatedGeneIndex : calculatedSet) {
+			auto availableNodes = genes[calculatedGeneIndex].getOutputGenesIndexes();
+
+
+			for (auto geneIndex : availableNodes) {
+				if (calculatedSet.find(geneIndex) != calculatedSet.end()) {
+					availableSet.insert(geneIndex);
+				}
+			}
+
+
+		}
+
+		if (availableSet.empty()) {
+			break;
+		}
+
+		std::set<size_t> setToCalculate;
+
+
+		for (size_t availableGeneIndex : availableSet) {
+			auto inputGenes = genes[availableGeneIndex].getInputGenesIndexes();
+
+			if (std::includes(calculatedSet.begin(), calculatedSet.end(), inputGenes.begin(), inputGenes.end()) ) {
+				setToCalculate.insert(availableGeneIndex);
+			}
+
+		}
+
+		for (size_t geneToCalculateIndex : setToCalculate) {
+			//calculate gene
+			auto inputsIndexes = genes[geneToCalculateIndex].getInputGenesIndexes();
+			
+			double newValue = 0;
+			for (size_t index : inputsIndexes) {
+				double valueToAdd = genes[index].getValue();
+				double weight = Node::getWeightBetween(genes[index], genes[geneToCalculateIndex]);
+
+				newValue += valueToAdd * weight;
+			}
+
+			genes[geneToCalculateIndex].setValue(newValue);
+			//
+			availableSet.erase(geneToCalculateIndex);
+			calculatedSet.insert(geneToCalculateIndex);
+		}
+
+
+	}
+
+	std::vector<double> output;
+	
+	for (auto outputIndex : outputIndexes) {
+		output.push_back(genes[outputIndex].getValue());
+	}
+
+
+	return output;
 }
 
 

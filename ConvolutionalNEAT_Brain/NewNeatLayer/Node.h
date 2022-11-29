@@ -74,7 +74,7 @@ public:
 		this->currentValue = value;
 	}
 
-	double getValue(double value) {
+	double getValue() {
 		return currentValue;
 	}
 
@@ -102,8 +102,23 @@ public:
 				connection.weight += weightChange;
 			}
 		}
+	}
 
+	static double getWeightBetween(Node& input, Node& output) {
+		size_t inputConnectionIndex = -1;
 
+		for (size_t i = 0; i < input.outputs.size(); i++) {
+
+			if (input.outputs[i].output == output.number) {
+				inputConnectionIndex = i;
+			}
+		}
+
+		if (inputConnectionIndex == -1) {
+			return NULL;
+		}
+
+		return input.outputs[inputConnectionIndex].weight;
 	}
 
 

@@ -154,7 +154,6 @@
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.cpp" />
     <ClCompile Include="ConvolutionalNEAT_Brain\Connection_gene.cpp" />
     <ClCompile Include="ConvolutionalBrain\ConvolutionalLayer.cpp" />
     <ClCompile Include="ConvolutionalBrain\DenseLayer.cpp" />
