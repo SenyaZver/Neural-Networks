@@ -3,9 +3,11 @@
 #include "../Common.h"
 #include <vector>
 #include <iostream>
-#include "../ConvolutionalBrain/ConvolutionalLayer.h"
-#include "../ConvolutionalBrain/ReshapeLayer.h"
-#include "NEAT_layer.h"
+#include "../Layers/Convolutional_Layer/ConvolutionalLayer.h"
+#include "../Layers/Reshape_Layer/ReshapeLayer.h"
+#include "../Layers/Old_NEAT_Layer/NEAT_layer.h"
+
+
 
 class ConvNEAT_Brain : public Brain {
 private:

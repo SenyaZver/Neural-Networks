@@ -1,6 +1,8 @@
 #pragma once
-#include "../../ConvolutionalNEAT_Brain/NEAT_layer.h"
+
 #include <iostream>
+#include "../../Layers/Old_NEAT_Layer/NEAT_layer.h"
+
 
 
 

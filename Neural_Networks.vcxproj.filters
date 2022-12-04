@@ -30,19 +30,19 @@
     <ClInclude Include="Utils.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalBrain\ConvolutionalLayer.h">
+    <ClInclude Include="Layers\Convolutional_Layer\ConvolutionalLayer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ConvolutionalBrain\ConvolutionBrain.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalBrain\DenseLayer.h">
+    <ClInclude Include="Layers\Dense_Layer\DenseLayer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalBrain\LoadingConvData.h">
+    <ClInclude Include="Layers\Convolutional_Layer\LoadingConvData.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalBrain\ReshapeLayer.h">
+    <ClInclude Include="Layers\Reshape_Layer\ReshapeLayer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h">
@@ -60,13 +60,13 @@
     <ClInclude Include="Tests\Old_NEAT_tests\ConvolutionalNEAT_Test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\NEAT_layer.h">
+    <ClInclude Include="Layers\Old_NEAT_Layer\NEAT_layer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\Connection_gene.h">
+    <ClInclude Include="Layers\Old_NEAT_Layer\Connection_gene.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\Node_gene.h">
+    <ClInclude Include="Layers\Old_NEAT_Layer\Node_gene.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ConvolutionalNEAT_Brain\ConvNEAT_Brain.h">
@@ -75,19 +75,19 @@
     <ClInclude Include="Tests\Old_NEAT_tests\NEAT_layer_Test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\Old_NEAT_tests\NEATcopyTest.h">
+    <ClInclude Include="Tests\Old_NEAT_tests\NEAT_copy_Test.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.h">
+    <ClInclude Include="Layers\NEAT_Layer\NEAT.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Node.h">
+    <ClInclude Include="Layers\NEAT_Layer\Node.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ConvolutionalNEAT_Brain\NewNeatLayer\Connection.h">
+    <ClInclude Include="Layers\NEAT_Layer\Connection.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tests\newNeatTest.h">
+    <ClInclude Include="Tests\New_NEAT_tests\NewNEAT_Tester.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,25 +98,25 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalBrain\ConvolutionalLayer.cpp">
+    <ClCompile Include="Layers\Convolutional_Layer\ConvolutionalLayer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalBrain\DenseLayer.cpp">
+    <ClCompile Include="Layers\Dense_Layer\DenseLayer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="PercepetronBrain\PerceptronBrain.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalNEAT_Brain\Connection_gene.cpp">
+    <ClCompile Include="Layers\Old_NEAT_Layer\Connection_gene.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalNEAT_Brain\Node_gene.cpp">
+    <ClCompile Include="Layers\Old_NEAT_Layer\Node_gene.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalNEAT_Brain\NEAT_layer.cpp">
+    <ClCompile Include="Layers\Old_NEAT_Layer\NEAT_layer.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ConvolutionalNEAT_Brain\NewNeatLayer\NEAT.cpp">
+    <ClCompile Include="Layers\NEAT_Layer\NEAT.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

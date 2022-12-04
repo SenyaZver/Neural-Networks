@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
 #include <iostream>
-#include "ConvolutionalLayer.h"
-#include "ReshapeLayer.h"
-#include "DenseLayer.h"
+
 #include "Common.h"
 #include "../Brain.h"
+#include "../Layers/Convolutional_Layer/ConvolutionalLayer.h"
+#include "../Layers/Reshape_Layer/ReshapeLayer.h"
+#include "../Layers/Dense_Layer/DenseLayer.h"
 
 //TODO fix fixed sizes
 class ConvolutionBrain: public Brain {

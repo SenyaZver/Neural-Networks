@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include "ConvolutionalBrain/ConvolutionBrain.h"
-#include "ConvolutionalBrain/ConvolutionalLayer.h"
 #include "PercepetronBrain/PerceptronBrain.h"
 #include "Common.h"
 

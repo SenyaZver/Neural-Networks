@@ -5,8 +5,8 @@
 #include <string>
 #include <sstream>
 #include "Common.h"
-#include "ConvolutionalBrain/LoadingConvData.h"
 #include "PercepetronBrain/LoadingPerceptronData.h"
+#include "Layers/Convolutional_Layer/LoadingConvData.h"
 
 
 class BrainLoader {

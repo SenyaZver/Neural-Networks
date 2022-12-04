@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include "../../ConvolutionalNEAT_Brain/NEAT_layer.h"
 #include <iostream>
 #include "../../ConvolutionalNEAT_Brain/ConvNEAT_Brain.h"
 
