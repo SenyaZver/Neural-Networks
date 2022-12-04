@@ -2,7 +2,7 @@
 
 
 
-double ConvolutionalLayer::cross(matrix& const first, matrix& const second)
+double ConvolutionalLayer::cross(Utils::matrix& const first, Utils::matrix& const second)
 {
 	double result = 0;
 	size_t size = first.size();
@@ -17,10 +17,10 @@ double ConvolutionalLayer::cross(matrix& const first, matrix& const second)
 	return result;
 }
 
-matrix ConvolutionalLayer::getSubMatrix(matrix& inputLayer, size_t verticalOffset, size_t horizontalOffset)
+Utils::matrix ConvolutionalLayer::getSubMatrix(Utils::matrix& inputLayer, size_t verticalOffset, size_t horizontalOffset)
 {
 	size_t size = filter1.size();
-	auto result = createSquareMatrix(size);
+	auto result = Utils::createSquareMatrix(size);
 
 
 	for (size_t i = 0; i < size; i++) {
@@ -37,12 +37,12 @@ ConvolutionalLayer::ConvolutionalLayer(){}
 
 
 
-void ConvolutionalLayer::activate(matrix& const layer)
+void ConvolutionalLayer::activate(Utils::matrix& const layer)
 {
 	size_t size = layer.size();
 	for (size_t i = 0; i < size; i++) {
 		for (size_t j = 0; j < size; j++) {
-			layer[i][j] = sigmoid(layer[i][j]);
+			layer[i][j] = Utils::sigmoid(layer[i][j]);
 		}
 	}
 }
@@ -51,28 +51,28 @@ void ConvolutionalLayer::randomInit()
 {
 	for (size_t i = 0; i < filterSize; i++) {
 		for (size_t j = 0; j < filterSize; j++) {
-			filter1[i][j] = getRandomNumber(-1, 1);
-			filter2[i][j] = getRandomNumber(-1, 1);
-			filter3[i][j] = getRandomNumber(-1, 1);
+			filter1[i][j] = Utils::getRandomNumber(-1, 1);
+			filter2[i][j] = Utils::getRandomNumber(-1, 1);
+			filter3[i][j] = Utils::getRandomNumber(-1, 1);
 		}
 	}
 
 	for (size_t i = 0; i < resultSize; i++) {
 		for (size_t j = 0; j < resultSize; j++) {
-			bias[i][j] = getRandomNumber(-1, 1);
+			bias[i][j] = Utils::getRandomNumber(-1, 1);
 		}
 	}
 
 }
 
-std::vector<std::vector<double>> ConvolutionalLayer::cross_correlate(matrix& inputLayer, matrix& filter)
+std::vector<std::vector<double>> ConvolutionalLayer::cross_correlate(Utils::matrix& inputLayer, Utils::matrix& filter)
 {
 	size_t size = inputLayer.size() - filter.size() + 1;
 
 
 
-	auto result = createSquareMatrix(size);
-	auto temp = createSquareMatrix(size);
+	auto result = Utils::createSquareMatrix(size);
+	auto temp = Utils::createSquareMatrix(size);
 
 	size_t verticalOffset = 0;
 	size_t horizontalOffset = 0;
@@ -89,7 +89,7 @@ std::vector<std::vector<double>> ConvolutionalLayer::cross_correlate(matrix& inp
 }
 
 
-ConvolutionalLayer::ConvolutionalLayer(size_t inputSize, matrix filter1, matrix filter2, matrix filter3, matrix bias)
+ConvolutionalLayer::ConvolutionalLayer(size_t inputSize, Utils::matrix& filter1, Utils::matrix& filter2, Utils::matrix& filter3, Utils::matrix& bias)
 {
 	this->filter1 = filter1;
 	this->filter2 = filter2;
@@ -109,17 +109,17 @@ ConvolutionalLayer::ConvolutionalLayer(size_t filterSize, size_t inputSize)
 	this->filterSize = filterSize;
 	this->resultSize = inputSize - this->filterSize + 1;
 
-	this->filter1 = createSquareMatrix(filterSize);
-	this->filter2 = createSquareMatrix(filterSize);
-	this->filter3 = createSquareMatrix(filterSize);
+	this->filter1 = Utils::createSquareMatrix(filterSize);
+	this->filter2 = Utils::createSquareMatrix(filterSize);
+	this->filter3 = Utils::createSquareMatrix(filterSize);
 
 
-	bias = createSquareMatrix(resultSize);
+	bias = Utils::createSquareMatrix(resultSize);
 
 	randomInit();
 }
 
-std::vector<std::vector<double>> ConvolutionalLayer::propagate(matrix& input1, matrix& input2, matrix& input3)
+std::vector<std::vector<double>> ConvolutionalLayer::propagate(Utils::matrix& input1, Utils::matrix& input2, Utils::matrix& input3)
 {
 	if (input1.size() < filter1.size()) {
 		throw "input size is larger than filter size";
@@ -131,7 +131,7 @@ std::vector<std::vector<double>> ConvolutionalLayer::propagate(matrix& input1, m
 	auto result3 = cross_correlate(input3, filter3);
 
 
-	auto result = createSquareMatrix(input1.size() - filter1.size() + 1);
+	auto result = Utils::createSquareMatrix(input1.size() - filter1.size() + 1);
 
 	for (int i = 0; i < result.size(); i++) {
 		for (int j = 0; j < result.size(); j++) {
@@ -146,12 +146,12 @@ void ConvolutionalLayer::mutate(double weighChangeLimit, double chance)
 {
 	for (size_t i = 0; i < filter1.size(); i++) {
 		for (size_t j = 0; j < filter1.size(); j++) {
-			if (getRandomNumber(0, 100) < chance) {
-				double change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+			if (Utils::getRandomNumber(0, 100) < chance) {
+				double change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 				filter1[i][j] += change;
-				change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+				change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 				filter2[i][j] += change;
-				change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+				change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 				filter3[i][j] += change;
 			}
 		}
@@ -159,7 +159,7 @@ void ConvolutionalLayer::mutate(double weighChangeLimit, double chance)
 
 	for (size_t i = 0; i < bias.size(); i++) {
 		for (size_t j = 0; j < bias.size(); j++) {
-			double change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+			double change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 			bias[i][j] += change;
 		}
 	}

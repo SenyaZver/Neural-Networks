@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../Common.h"
 #include "../BrainSaver.h"
 #include "../BrainLoader.h"
+#include "../Utils.h"
 
 void PerceptronTest() {
 	size_t inputSize = 30;
 
 
-	auto input = createSquareMatrix(inputSize);
+	auto input = Utils::createSquareMatrix(inputSize);
 	for (int i = 0; i < inputSize; i++) {
 		for (int j = 0; j < inputSize; j++) {
 			input[i][j] = 1;
@@ -20,7 +20,7 @@ void PerceptronTest() {
 
 
 	auto result = brain.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 
 
 	BrainSaver saver = BrainSaver("D:\\screenshots\\");
@@ -32,5 +32,5 @@ void PerceptronTest() {
 
 
 	result = brainCopy.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 }

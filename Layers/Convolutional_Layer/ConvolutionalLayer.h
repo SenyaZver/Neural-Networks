@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <random>
-#include "../../Common.h"
+#include "../../Utils.h"
 
 
 //rushed code, fix handling different amount of filters
@@ -16,32 +16,32 @@ private:
 	size_t filterSize;
 	size_t resultSize;
 
-	matrix filter1;
-	matrix filter2;
-	matrix filter3;
+	Utils::matrix filter1;
+	Utils::matrix filter2;
+	Utils::matrix filter3;
 
-	matrix bias;
+	Utils::matrix bias;
 
 
 private:
 	void randomInit();
 
-	void activate(matrix& const layer);
+	void activate(Utils::matrix& const layer);
 
 
-	double cross(matrix& const first, matrix& const second);
-	matrix getSubMatrix(matrix& inputLayer, size_t verticalOffset, size_t horizontalOffset);
+	double cross(Utils::matrix& const first, Utils::matrix& const second);
+	Utils::matrix getSubMatrix(Utils::matrix& inputLayer, size_t verticalOffset, size_t horizontalOffset);
 
 
-	matrix cross_correlate(matrix& inputLayer, matrix& filter);
+	Utils::matrix cross_correlate(Utils::matrix& inputLayer, Utils::matrix& filter);
 
 
 public:
 	ConvolutionalLayer(size_t newFilterSize, size_t newInputSize);
-	ConvolutionalLayer(size_t inputSize, matrix filter1, matrix filter2, matrix filter3, matrix bias);
+	ConvolutionalLayer(size_t inputSize, Utils::matrix& filter1, Utils::matrix& filter2, Utils::matrix& filter3, Utils::matrix& bias);
 	ConvolutionalLayer();
 
-	matrix propagate(matrix& input1, matrix& input2, matrix& input3);
+	Utils::matrix propagate(Utils::matrix& input1, Utils::matrix& input2, Utils::matrix& input3);
 
 	void mutate(double weightChangeLimit, double chance);
 
@@ -54,8 +54,8 @@ public:
 		return this->resultSize;
 	}
 
-	std::vector<matrix> getFilters() {
-		std::vector<matrix> filters =  std::vector<matrix>(3);
+	std::vector<Utils::matrix> getFilters() {
+		std::vector<Utils::matrix> filters =  std::vector<Utils::matrix>(3);
 		filters[0] = filter1;
 		filters[1] = filter2;
 		filters[2] = filter3;
@@ -63,7 +63,7 @@ public:
 		return filters;
 	}
 
-	matrix getBias() {
+	Utils::matrix getBias() {
 		return bias;
 	}
 

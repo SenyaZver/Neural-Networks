@@ -1,6 +1,5 @@
 #pragma once
 #include "../Brain.h"
-#include "../Common.h"
 #include <vector>
 #include <iostream>
 #include "../Layers/Convolutional_Layer/ConvolutionalLayer.h"

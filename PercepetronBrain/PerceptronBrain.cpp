@@ -1,4 +1,6 @@
 #include "PerceptronBrain.h"
+#include "../Utils.h"
+
 PerceptronBrain::PerceptronBrain()
 {
 }
@@ -34,20 +36,20 @@ PerceptronBrain* PerceptronBrain::copy()
 
 void PerceptronBrain::generate(vector<size_t> params)
 {
-    this->firstLayer = createMatrix(M1, N1);
+    this->firstLayer = Utils::createMatrix(M1, N1);
     this->firstBias = std::vector<double>(N1);
-    this->secondLayer = createMatrix(M2, N2);
+    this->secondLayer = Utils::createMatrix(M2, N2);
     this->secondBias = std::vector<double>(N2);
 
-    this->parentNum = int(getRandomNumber(0, 10000000));
+    this->parentNum = int(Utils::getRandomNumber(0, 10000000));
 
     for (int i = 0; i < n1; i++)
     {
         for (int j = 0; j < m1; j++)
         {
-            this->firstLayer[i][j] = getRandomNumber(-1, 1);
+            this->firstLayer[i][j] = Utils::getRandomNumber(-1, 1);
         }
-        this->firstBias[i] = getRandomNumber(-1, 1);
+        this->firstBias[i] = Utils::getRandomNumber(-1, 1);
     }
 
 
@@ -56,9 +58,9 @@ void PerceptronBrain::generate(vector<size_t> params)
     {
         for (int j = 0; j < m2; j++)
         {
-            this->secondLayer[i][j] = getRandomNumber(-1, 1);
+            this->secondLayer[i][j] = Utils::getRandomNumber(-1, 1);
         }
-        this->secondBias[i] = getRandomNumber(-1, 1);
+        this->secondBias[i] = Utils::getRandomNumber(-1, 1);
     }
    
    
@@ -71,12 +73,12 @@ void PerceptronBrain::mutate(vector<double> params)
     {
         for (int j = 0; j < m1; j++)
         {
-            mut_num = getRandomNumber(-0.05, 0.05);
+            mut_num = Utils::getRandomNumber(-0.05, 0.05);
             this->firstLayer[i][j] += mut_num;
             if (this->firstLayer[i][j] > 1) this->firstLayer[i][j] = 1;
             if (this->firstLayer[i][j] < -1) this->firstLayer[i][j] = -1;
         }
-        mut_num = getRandomNumber(-0.05, 0.05);
+        mut_num = Utils::getRandomNumber(-0.05, 0.05);
         this->firstBias[i] += mut_num;
         if (this->firstBias[i] > 1) this->firstBias[i] = 1;
         if (this->firstBias[i] < -1) this->firstBias[i] = -1;
@@ -85,12 +87,12 @@ void PerceptronBrain::mutate(vector<double> params)
     {
         for (int j = 0; j < m2; j++)
         {
-            mut_num = getRandomNumber(-0.05, 0.05);
+            mut_num = Utils::getRandomNumber(-0.05, 0.05);
             this->secondLayer[i][j] += mut_num;
             if (this->secondLayer[i][j] > 1) this->secondLayer[i][j] = 1;
             if (this->secondLayer[i][j] < -1) this->secondLayer[i][j] = -1;
         }
-        mut_num = getRandomNumber(-0.05, 0.05);
+        mut_num = Utils::getRandomNumber(-0.05, 0.05);
         this->secondBias[i] += mut_num;
         if (this->secondBias[i] > 1) this->secondBias[i] = 1;
         if (this->secondBias[i] < -1) this->secondBias[i] = -1;

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include "../../ConvolutionalNEAT_Brain/ConvNEAT_Brain.h"
+#include "../../Utils.h"
 
 
 
@@ -13,7 +14,7 @@ void convNEAT_test() {
 	size_t outputSize = 5;
 
 	//init input
-	auto input = createSquareMatrix(inputSize);
+	auto input = Utils::createSquareMatrix(inputSize);
 	for (int i = 0; i < inputSize; i++) {
 		for (int j = 0; j < inputSize; j++) {
 			input[i][j] = 1;
@@ -24,5 +25,5 @@ void convNEAT_test() {
 	ConvNEAT_Brain test;
 	test.generate(initParams);
 	auto result = test.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 }

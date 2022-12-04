@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 
-#include "Common.h"
+
 #include "../Brain.h"
 #include "../Layers/Convolutional_Layer/ConvolutionalLayer.h"
 #include "../Layers/Reshape_Layer/ReshapeLayer.h"

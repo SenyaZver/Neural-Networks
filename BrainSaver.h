@@ -4,7 +4,7 @@
 #include <fstream>
 #include "ConvolutionalBrain/ConvolutionBrain.h"
 #include "PercepetronBrain/PerceptronBrain.h"
-#include "Common.h"
+
 
 class BrainSaver
 {

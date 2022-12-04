@@ -4,9 +4,9 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include "Common.h"
 #include "PercepetronBrain/LoadingPerceptronData.h"
 #include "Layers/Convolutional_Layer/LoadingConvData.h"
+#include "Utils.h"
 
 
 class BrainLoader {
@@ -41,7 +41,7 @@ private:
 
 	matrix readMatrix(std::ifstream& file, size_t verticalSize, size_t horizontalSize) {
 		std::string currentLine;
-		matrix mat = createMatrix(verticalSize, horizontalSize);
+		matrix mat = Utils::createMatrix(verticalSize, horizontalSize);
 
 		for (int i = 0; i < horizontalSize; i++) {
 			getline(file, currentLine);

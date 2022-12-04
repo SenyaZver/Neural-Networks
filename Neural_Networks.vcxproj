@@ -130,7 +130,6 @@
     <ClInclude Include="Brain.h" />
     <ClInclude Include="BrainLoader.h" />
     <ClInclude Include="BrainSaver.h" />
-    <ClInclude Include="Common.h" />
     <ClInclude Include="Layers\NEAT_Layer\Connection.h" />
     <ClInclude Include="Layers\Old_NEAT_Layer\Connection_gene.h" />
     <ClInclude Include="Layers\Convolutional_Layer\ConvolutionalLayer.h" />

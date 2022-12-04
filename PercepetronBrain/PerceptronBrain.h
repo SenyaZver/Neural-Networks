@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include "../Common.h"
 #include "../Brain.h"
 #include "../Utils.h"
 /*

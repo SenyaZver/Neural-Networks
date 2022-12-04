@@ -1,7 +1,7 @@
 #include "NEAT.h"
-#include "../../Common.h"
 #include <set>
 #include <algorithm>
+#include "../../Utils.h"
 
 
 
@@ -114,7 +114,7 @@ void NEAT::createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize)
 
 	for (auto i: inputIndexes) {
 		for (auto j: hiddenIndexes) {
-			double weight = getRandomNumber(1, 1);
+			double weight = Utils::getRandomNumber(1, 1);
 			Node::connect(genes[i], genes[j], weight);
 
 			
@@ -124,7 +124,7 @@ void NEAT::createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize)
 
 	for (auto i : hiddenIndexes) {
 		for (auto j : outputIndexes) {
-			double weight = getRandomNumber(1, 1);
+			double weight = Utils::getRandomNumber(1, 1);
 			Node::connect(genes[i], genes[j], weight);
 		}
 	}
@@ -138,11 +138,11 @@ void NEAT::mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t
 
 	this->changeWeightsRandomly(weightChangeChance, weightChangeLimit);
 
-	size_t chance = getRandomNumber(0, 100);
+	size_t chance = Utils::getRandomNumber(0, 100);
 	if (chance < addHiddenGeneChance) {
 		this->addHiddenGene();
 	}
-	chance = getRandomNumber(0, 100);
+	chance = Utils::getRandomNumber(0, 100);
 	if (chance < addConnectionChance) {
 		this->addConnection();
 	}
@@ -163,7 +163,7 @@ void NEAT::addHiddenGene()
 
 	while (!isFound) {
 		//local index
-		size_t InputGene = getRandomNumber(0, eligebleInputs.size() - 1);
+		size_t InputGene = Utils::getRandomNumber(0, eligebleInputs.size() - 1);
 
 		Node* inputGene = &genes[eligebleInputs[InputGene]];
 		
@@ -178,7 +178,7 @@ void NEAT::addHiddenGene()
 		
 		else {
 			//local index
-			size_t temp = getRandomNumber(0, outputsForChosenGene.size() - 1);
+			size_t temp = Utils::getRandomNumber(0, outputsForChosenGene.size() - 1);
 			
 			size_t outputGeneNumber = outputsForChosenGene[temp];
 
@@ -211,10 +211,10 @@ void NEAT::changeWeightsRandomly(size_t changeChance, double changeLimit)
 	for (auto gene1 : genes) {
 		for (auto gene2 : genes) {
 			if (gene1.isConnectedTo( gene2.getNumber() )) {
-				size_t chance = getRandomNumber(0, 100);
+				size_t chance = Utils::getRandomNumber(0, 100);
 
 				if (chance < changeChance) {
-					double weightChange = getRandomNumber(-changeLimit, changeLimit);
+					double weightChange = Utils::getRandomNumber(-changeLimit, changeLimit);
 					Node::changeWeightBetween(gene1, gene2, weightChange);
 				}
 

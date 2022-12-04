@@ -2,7 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <random>
-#include "../../Common.h"
+#include "../../Utils.h"
 
 
 class DenseLayer {
@@ -11,7 +11,7 @@ private:
 	size_t hiddenLayerSize;
 	size_t outputSize;
 
-	matrix hiddenLayer;
+	Utils::matrix hiddenLayer;
 	std::vector<double> bias;
 
 
@@ -22,7 +22,7 @@ private:
 public:
 	DenseLayer();
 	DenseLayer(size_t inputSize, size_t hiddenLayerSize, size_t outputSize);
-	DenseLayer(size_t inputSize, matrix hiddenLayer, std::vector<double> bias);
+	DenseLayer(size_t inputSize, Utils::matrix hiddenLayer, std::vector<double> bias);
 	
 
 	std::vector<double> propagate(std::vector<double>& input);
@@ -38,7 +38,7 @@ public:
 		return this->hiddenLayerSize;
 	}
 
-	matrix getHiddenLayer() {
+	Utils::matrix getHiddenLayer() {
 		return this->hiddenLayer;
 	}
 

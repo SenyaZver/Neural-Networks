@@ -4,12 +4,13 @@
 
 
 
+
 void DenseLayer::randomInit() {
 	for (size_t i = 0; i < outputSize; i++) {
 		for (size_t j = 0; j < hiddenLayerSize; j++) {
-			hiddenLayer[i][j] = getRandomNumber(-1, 1);
+			hiddenLayer[i][j] = Utils::getRandomNumber(-1, 1);
 		}
-		bias[i] = getRandomNumber(-1, 1);
+		bias[i] = Utils::getRandomNumber(-1, 1);
 	}
 }
 
@@ -24,7 +25,7 @@ DenseLayer::DenseLayer(size_t inputSize, size_t hiddenLayerSize, size_t outputSi
 	this->inputSize = inputSize;
 	this->outputSize = outputSize;
 
-	this->hiddenLayer = createMatrix(hiddenLayerSize, outputSize);
+	this->hiddenLayer = Utils::createMatrix(hiddenLayerSize, outputSize);
 
 
 	this->bias = std::vector<double>(outputSize);
@@ -32,7 +33,7 @@ DenseLayer::DenseLayer(size_t inputSize, size_t hiddenLayerSize, size_t outputSi
 	randomInit();
 }
 
-DenseLayer::DenseLayer(size_t inputSize, matrix hiddenLayer, std::vector<double> bias)
+DenseLayer::DenseLayer(size_t inputSize, Utils::matrix hiddenLayer, std::vector<double> bias)
 {
 	this->inputSize = inputSize;
 	this->hiddenLayerSize = hiddenLayer[0].size();
@@ -64,13 +65,13 @@ void DenseLayer::mutate(double weighChangeLimit, double chance) {
 	{
 		for (size_t j = 0; j < hiddenLayerSize; j++)
 		{
-			if (getRandomNumber(0, 100) < chance) {
-				auto change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+			if (Utils::getRandomNumber(0, 100) < chance) {
+				auto change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 				hiddenLayer[i][j] += change;
 			}
 		}
-		if (getRandomNumber(0, 100) < chance) {
-			auto change = getRandomNumber(-weighChangeLimit, weighChangeLimit);
+		if (Utils::getRandomNumber(0, 100) < chance) {
+			auto change = Utils::getRandomNumber(-weighChangeLimit, weighChangeLimit);
 			bias[i] += change;
 		}
 	}

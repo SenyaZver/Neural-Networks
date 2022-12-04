@@ -1,22 +1,6 @@
-﻿  main.cpp
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(22,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Common.h(32,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(18,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(19,33): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(21,5): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(29,35): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(32,34): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(32,56): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Reshape_Layer\ReshapeLayer.h(39,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(54,54): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(55,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(56,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(30,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(31,33): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(33,5): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainSaver.h(122,40): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainSaver.h(151,41): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185): warning C4114: Множественное использование одного и того же квалификатора типа.
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(185,13): warning C4114: Множественное использование одного и того же квалификатора типа.
-C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(190,33): warning C4114: Множественное использование одного и того же квалификатора типа.
+﻿  Utils.cpp
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(22,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(24,39): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.cpp(89,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.cpp(99,39): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
   Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe

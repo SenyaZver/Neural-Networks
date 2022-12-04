@@ -1,7 +1,8 @@
 #pragma once
-#include "../Common.h"
 #include "../BrainSaver.h"
 #include "../BrainLoader.h"
+#include "../Utils.h"
+
 
 void convTest() {
 	size_t inputSize = 30;
@@ -10,7 +11,7 @@ void convTest() {
 	size_t outputSize = 5;
 
 	//init input
-	auto input = createSquareMatrix(inputSize);
+	auto input = Utils::createSquareMatrix(inputSize);
 	for (int i = 0; i < inputSize; i++) {
 		for (int j = 0; j < inputSize; j++) {
 			input[i][j] = 1;
@@ -23,7 +24,7 @@ void convTest() {
 
 
 	auto result = test.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 
 	std::cout << std::endl;
 
@@ -32,7 +33,7 @@ void convTest() {
 	test.mutate(mutationParams);
 
 	result = test.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 
 	std::cout << std::endl;
 
@@ -46,5 +47,5 @@ void convTest() {
 	auto loaded = loader.loadConvBrain("test.txt");
 
 	result = loaded.feedForward(input, input, input);
-	printVector(result);
+	Utils::printVector(result);
 }
