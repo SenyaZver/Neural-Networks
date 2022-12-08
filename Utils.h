@@ -15,6 +15,7 @@ namespace Utils {
 	vector<int> convertBrainResult(vector<double>& brainResult);
 
 	typedef std::vector<std::vector<double>> matrix;
+	typedef std::vector<std::vector<size_t>> intMatrix;
 
 
 	void printVector(std::vector<double>& vec);

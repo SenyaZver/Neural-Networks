@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Node.h"
+#include "../../Utils.h"
 
 class NEAT
 {
@@ -16,11 +17,12 @@ private:
 public:
 	std::vector<double> propogate(std::vector<double>& input);
 
-	void createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize);
+	void createSingleLayerPerceptron(size_t inputSize, size_t hiddenSize, size_t outputSize);
 	void mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t weightChangeChance, size_t weightChangeLimit);
 
 private:
-
+	bool isCyclic();
+	bool checkCycle(int node, std::vector<size_t> vis, std::vector<size_t> dfsVis);
 
 	void addHiddenGene();
 	void addConnection();

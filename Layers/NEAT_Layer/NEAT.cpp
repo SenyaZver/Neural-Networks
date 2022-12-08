@@ -92,7 +92,7 @@ std::vector<double> NEAT::propogate(std::vector<double>& input)
 
 
 
-void NEAT::createDefault(size_t inputSize, size_t hiddenSize, size_t outputSize)
+void NEAT::createSingleLayerPerceptron(size_t inputSize, size_t hiddenSize, size_t outputSize)
 {
 	for (int i = 0; i < inputSize; i++) {
 		auto inputGene = new Node(i);
@@ -147,6 +147,42 @@ void NEAT::mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t
 		this->addConnection();
 	}
 
+}
+
+bool NEAT::isCyclic()
+{
+	std::vector<size_t> vis = std::vector<size_t>(this->size);
+	std::vector<size_t> dfsVis = std::vector<size_t>(this->size);
+	
+	for (int i = 0; i < this->size; i++) {
+		vis[i] = 0;
+		dfsVis[i] = 0;
+	}
+
+	for (int i = 0; i < this->size; i++) {
+		if (!vis[i]) {
+			if (checkCycle(i, vis, dfsVis)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool NEAT::checkCycle(int index, std::vector<size_t> vis, std::vector<size_t> dfsVis)
+{
+	vis[index] = 1;
+	dfsVis[index] = 1;
+	for (auto it : genes[index].getOutputGenesIndexes()) {
+		if (!vis[it]) {
+			if (checkCycle(it, vis, dfsVis)) return true;
+		}
+		else if (dfsVis[it]) {
+			return true;
+		}
+	}
+	dfsVis[index] = 0;
+	return false;
 }
 
 void NEAT::addHiddenGene()

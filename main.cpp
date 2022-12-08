@@ -12,7 +12,7 @@
 int main() {
 	NewNEAT_Tester tester;
 
-	tester.test2();
+	tester.test3();
 }
 
 
