@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../Layers/Convolutional_Layer/ConvolutionalLayer.h"
 #include "../Layers/Reshape_Layer/ReshapeLayer.h"
-#include "../Layers/Old_NEAT_Layer/NEAT_layer.h"
+#include "../Layers/NEAT_Layer/NEAT.h"
 
 
 
@@ -12,7 +12,7 @@ class ConvNEAT_Brain : public Brain {
 private:
 	ConvolutionalLayer conv;
 	ReshapeLayer reshape;
-	NEAT_layer neat;
+	NEAT neat;
 
 public:
 	ConvNEAT_Brain() {
@@ -20,7 +20,7 @@ public:
 	}
 
 	ConvNEAT_Brain(size_t inputSize, size_t filterSize, size_t outputSize, size_t hiddenLayerSize) :conv(filterSize, inputSize),reshape((inputSize + 1 - filterSize)* (inputSize + 1 - filterSize)) {
-		neat.createDefault((inputSize + 1 - filterSize) * (inputSize + 1 - filterSize), hiddenLayerSize, outputSize);
+		neat.createSingleLayerPerceptron((inputSize + 1 - filterSize) * (inputSize + 1 - filterSize), hiddenLayerSize, outputSize);
 	}
 
 
@@ -33,7 +33,7 @@ public:
 
 		size_t denseInputSize = (params[0] + 1 - params[1]) * (params[0] + 1 - params[1]);
 		this->reshape = ReshapeLayer(denseInputSize);
-		this->neat.createDefault(denseInputSize, params[2], params[3]);
+		this->neat.createSingleLayerPerceptron(denseInputSize, params[2], params[3]);
 	}
 
 
@@ -52,7 +52,7 @@ public:
 
 		ConvolutionalLayer newConv = this->conv;
 		ReshapeLayer newReshape = this->reshape;
-		NEAT_layer newNeat = *this->neat.clone();
+		NEAT newNeat = this->neat;
 
 		
 		newBrain->conv = newConv;

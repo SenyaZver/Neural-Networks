@@ -6,13 +6,12 @@
 #include "Tests/ConvolutionTest.h"
 #include "Tests/PerceptronTest.h"
 #include "Tests/New_NEAT_tests/NewNEAT_Tester.h"
+#include "Tests/ConvolutionalNeatTest.h"
 
 
 
 int main() {
-	NewNEAT_Tester tester;
-
-	tester.test3();
+	ConvolutionalNeatTest();
 }
 
 

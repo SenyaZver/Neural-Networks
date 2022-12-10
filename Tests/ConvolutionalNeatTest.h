@@ -1,13 +1,9 @@
 #pragma once
-#include <vector>
-#include <iostream>
-#include "../../ConvolutionalNEAT_Brain/ConvNEAT_Brain.h"
-#include "../../Utils.h"
+#include "../Utils.h"
+#include "../Layers/NEAT_Layer/NEAT.h"
+#include "../ConvolutionalNEAT_Brain/ConvNEAT_Brain.h"
 
-
-
-void convNEAT_test() {
-
+void ConvolutionalNeatTest() {
 	size_t inputSize = 30;
 	size_t filterSize = 5;
 	size_t hiddenLayerSize = 20;

@@ -144,8 +144,8 @@
     <ClInclude Include="Layers\NEAT_Layer\Node.h" />
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h" />
     <ClInclude Include="PercepetronBrain\PerceptronBrain.h" />
+    <ClInclude Include="Tests\ConvolutionalNeatTest.h" />
     <ClInclude Include="Tests\New_NEAT_tests\NewNEAT_Tester.h" />
-    <ClInclude Include="Tests\Old_NEAT_tests\ConvolutionalNEAT_Test.h" />
     <ClInclude Include="Tests\ConvolutionTest.h" />
     <ClInclude Include="Tests\Old_NEAT_tests\NEAT_copy_Test.h" />
     <ClInclude Include="Tests\Old_NEAT_tests\NEAT_layer_Test.h" />

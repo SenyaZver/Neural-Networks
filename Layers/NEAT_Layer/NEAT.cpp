@@ -114,7 +114,7 @@ void NEAT::createSingleLayerPerceptron(size_t inputSize, size_t hiddenSize, size
 
 	for (auto i: inputIndexes) {
 		for (auto j: hiddenIndexes) {
-			double weight = Utils::getRandomNumber(1, 1);
+			double weight = Utils::getRandomNumber(-1, 1);
 			Node::connect(genes[i], genes[j], weight);
 
 			
@@ -124,7 +124,7 @@ void NEAT::createSingleLayerPerceptron(size_t inputSize, size_t hiddenSize, size
 
 	for (auto i : hiddenIndexes) {
 		for (auto j : outputIndexes) {
-			double weight = Utils::getRandomNumber(1, 1);
+			double weight = Utils::getRandomNumber(-1, 1);
 			Node::connect(genes[i], genes[j], weight);
 		}
 	}
@@ -239,7 +239,30 @@ void NEAT::addHiddenGene()
 
 void NEAT::addConnection()
 {
-	//TODO
+	auto eligebleInputs = std::vector<size_t>();
+	eligebleInputs.insert(eligebleInputs.end(), this->inputIndexes.begin(), this->inputIndexes.end());
+	eligebleInputs.insert(eligebleInputs.end(), this->hiddenIndexes.begin(), this->hiddenIndexes.end());
+
+	auto eligebleOutputs = std::vector<size_t>();
+	eligebleOutputs.insert(eligebleOutputs.end(), this->outputIndexes.begin(), this->outputIndexes.end());
+	eligebleOutputs.insert(eligebleOutputs.end(), this->hiddenIndexes.begin(), this->hiddenIndexes.end());
+
+
+	size_t randomInputIndex = Utils::getRandomNumber(0, eligebleInputs.size() - 1);
+	size_t randomOutputIndex = Utils::getRandomNumber(0, eligebleInputs.size() - 1);
+
+	std::cout << randomInputIndex << " - " << randomOutputIndex << std::endl;
+
+	if (genes[randomInputIndex].isConnectedTo(randomOutputIndex)) {
+		return;
+	}
+
+	Node::connect(genes[randomInputIndex], genes[randomOutputIndex], 0);
+
+	if (this->isCyclic()) {
+		Node::disconnect(genes[randomInputIndex], genes[randomOutputIndex]);
+	}
+
 }
 
 void NEAT::changeWeightsRandomly(size_t changeChance, double changeLimit)
