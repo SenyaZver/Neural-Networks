@@ -1,4 +1,5 @@
 #include "ConvolutionalLayer.h"
+#include <sstream>
 
 
 
@@ -163,4 +164,95 @@ void ConvolutionalLayer::mutate(double weighChangeLimit, double chance)
 			bias[i][j] += change;
 		}
 	}
+
+}
+
+void ConvolutionalLayer::save(std::ofstream& file) {
+
+	file << "filterSize" << std::endl;
+	file << this->filterSize << std::endl;
+
+	file << "filter1" << std::endl;
+	Utils::printMatrixToFile(file, this->filter1);
+
+	file << "filter2" << std::endl;
+	Utils::printMatrixToFile(file, this->filter2);
+
+	file << "filter3" << std::endl;
+	Utils::printMatrixToFile(file, this->filter3);
+
+	file << "convBiasSize" << std::endl;
+	file << this->bias.size() << std::endl;
+
+	file << "convBias" << std::endl;
+	Utils::printMatrixToFile(file, this->bias);
+
+	file << std::endl << std::endl;
+}
+
+ConvolutionalLayer ConvolutionalLayer::load(std::string filename)
+{
+
+	std::ifstream file;
+	file.open(filename);
+
+	if (file.good() == false) {
+		throw "File Loading Failed";
+	}
+
+	LoadingConvData dataHolder = readConvDataFromFile(file);
+
+	ConvolutionalLayer convLayer = ConvolutionalLayer
+	(
+		dataHolder.convInputSize,
+		dataHolder.filter1,
+		dataHolder.filter2,
+		dataHolder.filter3,
+		dataHolder.convBias
+	);
+
+	file.close();
+	return convLayer;
+}
+
+LoadingConvData ConvolutionalLayer::readConvDataFromFile(std::ifstream& file) {
+
+	std::string currentLine;
+	LoadingConvData data;
+
+
+	while (getline(file, currentLine)) {
+		std::istringstream iss(currentLine);
+
+		std::string temp;
+		iss >> temp;
+
+
+		if (temp == "filterSize") {
+			data.filterSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "filter1") {
+			data.filter1 = Utils::readMatrix(file, data.filterSize, data.filterSize);
+		}
+
+		else if (temp == "filter2") {
+			data.filter2 = Utils::readMatrix(file, data.filterSize, data.filterSize);
+		}
+
+		else if (temp == "filter3") {
+			data.filter3 = Utils::readMatrix(file, data.filterSize, data.filterSize);
+		}
+
+		else if (temp == "convBiasSize") {
+			data.convBiasSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "convBias") {
+			data.convBias = Utils::readMatrix(file, data.convBiasSize, data.convBiasSize);
+		}
+
+	}
+
+	return data;
 }

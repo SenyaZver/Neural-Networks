@@ -5,17 +5,11 @@
 struct LoadingConvData {
 	size_t convInputSize; 
 	size_t filterSize; 
-	matrix filter1; 
-	matrix filter2; 
-	matrix filter3; 
+	Utils::matrix filter1; 
+	Utils::matrix filter2;
+	Utils::matrix filter3;
 	size_t convBiasSize;
-	matrix convBias;
+	Utils::matrix convBias;
 
 
-	size_t denseInputSize;
-	size_t hiddenLayerSize; 
-	matrix hiddenLayer; 
-	size_t denseBiasSize;
-	std::vector<double> denseBias;
-	size_t outputSize;
 };

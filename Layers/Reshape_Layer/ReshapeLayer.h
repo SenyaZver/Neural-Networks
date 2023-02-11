@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <sstream>
 
 
 
@@ -33,6 +34,37 @@ public:
 	}
 
 	
+	void save(std::ofstream& file) {
+		file << "denseInputSize" << std::endl;
+		file << this->size << std::endl << std::endl;
+	}
+
+	static ReshapeLayer load(std::string filename) {
+		std::ifstream file;
+		file.open(filename);
+
+		if (file.good() == false) {
+			throw "File Loading Failed";
+		}
+		std::string currentLine;
+		size_t size;
+
+		while (getline(file, currentLine)) {
+			std::istringstream iss(currentLine);
+
+			std::string temp;
+			iss >> temp;
+
+
+			if (temp == "denseInputSize") {
+				size = Utils::readNumber(file);
+			}
+
+
+		}
+
+		return ReshapeLayer(size);
+	}
 
 
 

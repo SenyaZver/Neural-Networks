@@ -2,6 +2,7 @@
 #include <vector>
 #include "../Brain.h"
 #include "../Utils.h"
+#include "LoadingPerceptronData.h"
 /*
 * For small image
 #define M1 30
@@ -17,7 +18,7 @@
 
 using std::vector;
 
-class PerceptronBrain: public Brain
+class PerceptronBrain : public Brain
 {
 public:
     PerceptronBrain();
@@ -39,6 +40,15 @@ public:
     matrix secondLayer;
     std::vector<double> secondBias;
 
+private:
+    void savePerceptronLayer(std::ofstream& file, size_t horizontalSize, size_t verticalSize, matrix& layer, size_t layerNumber);
+    void savePerceptronBias(std::ofstream& file, size_t size, std::vector<double>& bias, size_t biasNumber);
 
+    LoadingPerceptronData readPerceptronDataFromFile(std::ifstream& file);
+
+public:
+
+    virtual void save(std::string filename);
+    virtual void load(std::string filename);
 };
 

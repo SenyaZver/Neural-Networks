@@ -1,4 +1,6 @@
 #include "DenseLayer.h"
+#include "LoadingDenseData.h"
+#include <sstream>
 
 
 
@@ -75,4 +77,85 @@ void DenseLayer::mutate(double weighChangeLimit, double chance) {
 			bias[i] += change;
 		}
 	}
+}
+
+void DenseLayer::save(std::ofstream& file) {
+
+	file << "denseBiasSize" << std::endl;
+	file << this->bias.size() << std::endl;
+
+	file << "denseInputSize" << std::endl;
+	file << this->inputSize << std::endl;
+
+	file << "denseBias" << std::endl;
+	Utils::printVectorToFile(file, this->bias);
+
+	file << "hiddenLayerSize" << std::endl;
+	file << this->hiddenLayerSize << std::endl;
+
+	file << "outputSize" << std::endl;
+	file << this->outputSize << std::endl;
+
+	file << "hiddenLayer" << std::endl;
+	Utils::printMatrixToFile(file, this->hiddenLayer);
+}
+
+DenseLayer DenseLayer::load(std::string filename)
+{
+
+	std::ifstream file;
+	file.open(filename);
+
+	if (file.good() == false) {
+		throw "File Loading Failed";
+	}
+	std::string currentLine;
+	LoadingDenseData data;
+
+
+	while (getline(file, currentLine)) {
+		std::istringstream iss(currentLine);
+
+		std::string temp;
+		iss >> temp;
+
+
+		if (temp == "denseBiasSize") {
+			data.denseBiasSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "denseInputSize") {
+			data.denseInputSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "denseBias") {
+			data.denseBias = Utils::readVector(file, data.denseBiasSize);
+		}
+
+		else if (temp == "hiddenLayerSize") {
+			data.hiddenLayerSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "outputSize") {
+			data.outputSize = Utils::readNumber(file);
+		}
+
+		else if (temp == "hiddenLayer") {
+			data.hiddenLayer = Utils::readMatrix(file, data.hiddenLayerSize, data.outputSize);
+		}
+
+	}
+
+
+
+	DenseLayer denseLayer = DenseLayer
+	(
+		data.denseInputSize,
+		data.hiddenLayer,
+		data.denseBias
+	);
+
+	file.close();
+
+	return denseLayer;
 }

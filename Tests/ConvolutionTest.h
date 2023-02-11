@@ -1,5 +1,4 @@
 #pragma once
-#include "../BrainSaver.h"
 #include "../BrainLoader.h"
 #include "../Utils.h"
 
@@ -37,14 +36,11 @@ void convTest() {
 
 	std::cout << std::endl;
 
+	test.save("D:\\screenshots\\test.txt");
 
-	BrainSaver saver = BrainSaver("D:\\screenshots\\");
-	saver.save(test, "test.txt");
+	auto loaded = ConvolutionBrain();
+	loaded.load("D:\\screenshots\\test.txt");
 
-
-
-	BrainLoader loader = BrainLoader("D:\\screenshots\\");
-	auto loaded = loader.loadConvBrain("test.txt");
 
 	result = loaded.feedForward(input, input, input);
 	Utils::printVector(result);

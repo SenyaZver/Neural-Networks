@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Brain.h" />
     <ClInclude Include="BrainLoader.h" />
-    <ClInclude Include="BrainSaver.h" />
+    <ClInclude Include="Layers\Dense_Layer\LoadingDenseData.h" />
     <ClInclude Include="Layers\NEAT_Layer\Connection.h" />
     <ClInclude Include="Layers\Old_NEAT_Layer\Connection_gene.h" />
     <ClInclude Include="Layers\Convolutional_Layer\ConvolutionalLayer.h" />
@@ -144,6 +144,7 @@
     <ClInclude Include="Layers\NEAT_Layer\Node.h" />
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h" />
     <ClInclude Include="PercepetronBrain\PerceptronBrain.h" />
+    <ClInclude Include="SaveableObject.h" />
     <ClInclude Include="Tests\ConvolutionalNeatTest.h" />
     <ClInclude Include="Tests\New_NEAT_tests\NewNEAT_Tester.h" />
     <ClInclude Include="Tests\ConvolutionTest.h" />

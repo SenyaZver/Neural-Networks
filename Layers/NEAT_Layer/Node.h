@@ -177,5 +177,7 @@ public:
 		std::cout << std::endl;
 	}
 
+	friend class NEAT;
+
 };
 

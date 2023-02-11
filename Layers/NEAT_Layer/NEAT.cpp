@@ -2,12 +2,15 @@
 #include <set>
 #include <algorithm>
 #include "../../Utils.h"
+#include <sstream>
 
 
 
 
 std::vector<double> NEAT::propogate(std::vector<double>& input)
 {
+
+
 	if (input.size() != this->inputIndexes.size()) {
 		std::cout << "NEAT input size is wrong" << std::endl;
 		return std::vector<double>();
@@ -69,6 +72,7 @@ std::vector<double> NEAT::propogate(std::vector<double>& input)
 			}
 
 			genes[geneToCalculateIndex].setValue(newValue);
+			genes[geneToCalculateIndex].fastSigmoid();
 			//
 
 			availableSet.erase(geneToCalculateIndex);
@@ -149,6 +153,137 @@ void NEAT::mutate(size_t addHiddenGeneChance, size_t addConnectionChance, size_t
 
 }
 
+void NEAT::save(std::ofstream& file)
+{
+	file << "genesAmount" << std::endl;
+	file << this->size << std::endl;
+
+	file << "inputSize" << std::endl;
+	file << this->inputIndexes.size() << std::endl;
+	for (size_t i = 0; i < this->inputIndexes.size(); i++) {
+		file << this->inputIndexes[i] << std::endl;
+	}
+
+	file << "hiddenSize" << std::endl;
+	file << this->hiddenIndexes.size() << std::endl;
+	for (size_t i = 0; i < this->hiddenIndexes.size(); i++) {
+		file << this->hiddenIndexes[i] << std::endl;
+	}
+
+
+	file << "outputSize" << std::endl;
+	file << this->outputIndexes.size() << std::endl;
+	for (size_t i = 0; i < this->outputIndexes.size() ; i++) {
+		file << this->outputIndexes[i] << std::endl;
+	}
+
+	for (auto gene : this->genes) {
+
+		for (auto& connection : gene.outputs) {
+			file << gene.number << " " << connection.output << " " << connection.weight << std::endl;
+		}
+	}
+
+}
+
+NEAT NEAT::load(std::string filename)
+{
+	std::ifstream file;
+	file.open(filename);
+
+	if (!file.good()) {
+		throw "File " + filename + " couldn't open";
+	}
+
+
+	std::string currentLine;
+	size_t genesAmount;
+
+	NEAT loadedBrain;
+
+
+	genesAmount = Utils::readNumber(file);
+
+	std::cout << genesAmount << std::endl;
+
+	for (size_t i = 0; i < genesAmount; i++) {
+		loadedBrain.genes.push_back(Node(i));
+	}
+
+	getline(file, currentLine);
+	std::istringstream iss(currentLine);
+
+	std::string temp;
+	iss >> temp;
+
+
+	if (temp == "inputSize") {
+		size_t inputSize = Utils::readNumber(file);
+
+		std::cout << inputSize << std::endl;
+
+
+
+		for (size_t i = 0; i < inputSize; i++) {
+			size_t index = Utils::readNumber(file);
+			loadedBrain.inputIndexes.push_back(index);
+		}
+		
+	}
+	getline(file, currentLine);
+	iss = std::istringstream(currentLine);
+	iss >> temp;
+
+
+
+	if (temp == "hiddenSize") {
+
+		size_t hiddenSize = Utils::readNumber(file);
+		
+		for (size_t i = 0; i < hiddenSize; i++) {
+			size_t index = Utils::readNumber(file);
+			loadedBrain.hiddenIndexes.push_back(index);
+		}
+	}
+
+	getline(file, currentLine);
+	iss = std::istringstream(currentLine);
+	iss >> temp;
+
+	if (temp == "outputSize") {
+		size_t outputSize = Utils::readNumber(file);
+		
+		for (size_t i = 0; i < outputSize; i++) {
+			size_t index = Utils::readNumber(file);
+			loadedBrain.outputIndexes.push_back(index);
+		}
+	}
+
+
+	for (size_t i = 0; i < genesAmount; i++) {
+		getline(file, currentLine);
+		std::istringstream lineStream(currentLine);
+
+		size_t inputIndex;
+		size_t outputIndex;
+
+		double weight;
+
+		lineStream >> inputIndex;
+		lineStream >> outputIndex;
+		lineStream >> weight;
+
+		Node::connect(loadedBrain.genes[inputIndex], loadedBrain.genes[outputIndex], weight);
+	}
+
+	file.close();
+
+	loadedBrain.size = loadedBrain.genes.size();
+
+
+	return loadedBrain;
+}
+
 bool NEAT::isCyclic()
 {
 	std::vector<size_t> vis = std::vector<size_t>(this->size);
@@ -187,14 +322,12 @@ bool NEAT::checkCycle(int index, std::vector<size_t> vis, std::vector<size_t> df
 
 void NEAT::addHiddenGene()
 {
-
 	//actual numbers
 	auto eligebleInputs = std::vector<size_t>();
 	eligebleInputs.insert(eligebleInputs.end(), this->inputIndexes.begin(), this->inputIndexes.end());
 	eligebleInputs.insert(eligebleInputs.end(), this->hiddenIndexes.begin(), this->hiddenIndexes.end());
 
 
-	
 	bool isFound = false;
 
 	while (!isFound) {
@@ -220,8 +353,6 @@ void NEAT::addHiddenGene()
 
 			double oldWeight = Node::disconnect(*inputGene, this->genes[outputGeneNumber]);
 			
-
-
 			Node* newGene = new Node(this->size);
 			this->size++;
 
@@ -231,7 +362,6 @@ void NEAT::addHiddenGene()
 			genes.push_back(*newGene);
 
 			break;
-
 		}
 
 	}

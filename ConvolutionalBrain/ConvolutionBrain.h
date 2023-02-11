@@ -15,9 +15,6 @@ private:
 	ReshapeLayer reshape;
 	DenseLayer dense;
 
-private:
-
-
 
 public:
 	ConvolutionBrain(size_t inputSize, size_t filterSize, size_t hiddenLayerSize, size_t outputSize) : conv(filterSize, inputSize),
@@ -59,33 +56,7 @@ public:
 		auto reshapeResult = reshape.propagate(convResult);
 		auto denseResult = dense.propagate(reshapeResult);
 
-		vector<double> direction(2);
-
-
-
-		if (denseResult[0] > denseResult[1])
-		{
-			direction[0] = 0;
-		}
-		else
-		{
-			direction[0] = 1;
-		}
-		if (denseResult[2] > denseResult[3])
-		{
-			if (denseResult[2] > denseResult[4])
-				direction[1] = 1;
-			else
-				direction[1] = 0;
-		}
-		else
-		{
-			if (denseResult[3] > denseResult[4])
-				direction[1] = -1;
-			else
-				direction[1] = 0;
-		}
-		return direction;
+		return Utils::convertBrainResult(denseResult);
 	}
 
 	void mutate(double weightChangeLimit, int chance) {
@@ -112,6 +83,50 @@ public:
 	ReshapeLayer getReshapeLayer() {
 		return this->reshape;
 	}
+
+	bool save(const std::string filePath, const std::string fileName) {
+		std::string fullpath = filePath + fileName;
+
+		std::ofstream file;
+		file.precision(10);
+		file.open(fullpath);
+
+		if (file.good() == false) {
+			return false;
+		}
+
+
+		this->conv.save(file);
+		this->reshape.save(file);
+		this->dense.save(file);
+
+		file.close();
+		return true;
+	}
+
+	virtual void save(std::string filename) {
+		std::ofstream file;
+		file.precision(10);
+		file.open(filename);
+
+
+		this->conv.save(file);
+		this->reshape.save(file);
+		this->dense.save(file);
+
+		file.close();
+	}
+
+	virtual void load(std::string filename) {
+		DenseLayer dense = DenseLayer::load(filename);
+		ReshapeLayer reshape = ReshapeLayer::load(filename);
+		ConvolutionalLayer conv = ConvolutionalLayer::load(filename);
+
+		this->conv = conv;
+		this->reshape = reshape;
+		this->dense = dense;
+	}
+
 
 
 };

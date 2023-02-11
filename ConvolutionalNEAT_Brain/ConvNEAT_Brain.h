@@ -64,44 +64,63 @@ public:
 	}
 
 
-	std::vector<double> feedForward(matrix& const input1,
+	std::vector<double> feedForward(
+		matrix& const input1,
 		matrix& const input2,
-		matrix& const input3)
-	{
-		
+		matrix& const input3
+	) {
 		auto convResult = conv.propagate(input1, input2, input3);
 		auto reshapeResult = reshape.propagate(convResult);
 		auto neatResult = neat.propogate(reshapeResult);
 
-		vector<double> direction(2);
+		return Utils::convertBrainResult(neatResult);
+	}
 
+	bool save(const std::string filePath, const std::string fileName) {
+		std::string fullpath = filePath + fileName;
 
+		std::ofstream file;
+		file.precision(10);
+		file.open(fullpath);
 
-		if (neatResult[0] > neatResult[1])
-		{
-			direction[0] = 0;
+		if (file.good() == false) {
+			return false;
 		}
-		else
-		{
-			direction[0] = 1;
-		}
-		if (neatResult[2] > neatResult[3])
-		{
-			if (neatResult[2] > neatResult[4])
-				direction[1] = 1;
-			else
-				direction[1] = 0;
-		}
-		else
-		{
-			if (neatResult[3] > neatResult[4])
-				direction[1] = -1;
-			else
-				direction[1] = 0;
-		}
-		return direction;
 
 
+		this->conv.save(file);
+		this->reshape.save(file);
+		this->neat.save(file);
+
+		file.close();
+		return true;
+	}
+
+
+	virtual void save(std::string filename) {
+
+		std::ofstream file;
+		file.precision(10);
+		file.open(filename);
+
+
+
+
+		this->conv.save(file);
+		this->reshape.save(file);
+		this->neat.save(file);
+
+		file.close();
+	}
+
+	virtual void load(std::string filename) {
+		ReshapeLayer reshape = ReshapeLayer::load(filename);
+		ConvolutionalLayer conv = ConvolutionalLayer::load(filename);
+		NEAT neat = NEAT::load(filename);
+
+		this->conv = conv;
+		this->reshape = reshape;
+		this->neat = neat;
 	}
 	
 

@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include "ConvolutionalBrain/ConvolutionBrain.h"
-#include "BrainSaver.h"
 #include "BrainLoader.h"
 #include "Tests/ConvolutionTest.h"
 #include "Tests/PerceptronTest.h"
@@ -11,7 +10,11 @@
 
 
 int main() {
+	//convTest();
+	//PerceptronTest();
 	ConvolutionalNeatTest();
+	//NewNEAT_Tester tester;
+	//tester.loadTest();
 }
 
 

@@ -29,6 +29,9 @@ public:
 
 	void mutate(double weighChangeLimit, double chance);
 
+	void save(std::ofstream& file);
+	static DenseLayer load(std::string filename);
+
 
 	size_t getBiasSize() {
 		return this->bias.size();

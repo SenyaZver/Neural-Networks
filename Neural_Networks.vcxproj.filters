@@ -21,9 +21,6 @@
     <ClInclude Include="BrainLoader.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="BrainSaver.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -85,6 +82,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Tests\ConvolutionalNeatTest.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Layers\Dense_Layer\LoadingDenseData.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveableObject.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

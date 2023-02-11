@@ -1,1 +1,19 @@
-﻿  Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe
+﻿  NEAT.cpp
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(24,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(26,39): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(107,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(113,2): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(143,50): warning C4244: аргумент: преобразование "size_t" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(145,16): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(149,33): warning C4244: =: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(314,7): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(336,70): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(336,20): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(351,72): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(351,16): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(382,76): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(382,26): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(383,77): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(383,27): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(404,19): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+  Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe

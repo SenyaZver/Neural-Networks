@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../BrainSaver.h"
 #include "../BrainLoader.h"
 #include "../Utils.h"
+#include "../PercepetronBrain/PerceptronBrain.h"
 
 void PerceptronTest() {
 	size_t inputSize = 30;
@@ -23,14 +23,12 @@ void PerceptronTest() {
 	Utils::printVector(result);
 
 
-	BrainSaver saver = BrainSaver("D:\\screenshots\\");
+	brain.save("D:\\screenshots\\perceptron.txt");
 
-	saver.save(brain, "perceptron.txt");
-	
-	BrainLoader loader = BrainLoader("D:\\screenshots\\");
-	auto brainCopy = loader.loadPerceptronBrain("perceptron.txt");
-
+	PerceptronBrain brainCopy = PerceptronBrain();
+	brainCopy.load("D:\\screenshots\\perceptron.txt");
 
 	result = brainCopy.feedForward(input, input, input);
 	Utils::printVector(result);
+
 }

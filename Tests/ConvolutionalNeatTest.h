@@ -22,4 +22,12 @@ void ConvolutionalNeatTest() {
 	test.generate(initParams);
 	auto result = test.feedForward(input, input, input);
 	Utils::printVector(result);
+	
+	test.save("D:\\screenshots\\test.txt");
+
+	
+	auto loaded = ConvNEAT_Brain();
+	loaded.load("D:\\screenshots\\test.txt");
+	result = loaded.feedForward(input, input, input);
+	Utils::printVector(result);
 }

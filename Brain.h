@@ -1,13 +1,14 @@
 #pragma once
 #pragma once
 #include <vector>
-
+#include <string>
+#include "SaveableObject.h"
 
 using std::vector;
 
 typedef std::vector<std::vector<double>> matrix;
 
-class Brain
+class Brain: SaveableObject
 {
 public:
 
@@ -19,6 +20,8 @@ public:
         matrix& const greenInput,
         matrix& const blueInput
     ) = 0;
+
+
     virtual ~Brain() = default;
 
     int parentNum;

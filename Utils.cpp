@@ -1,6 +1,7 @@
 #include "Utils.h"
 #include <random>
 #include <iostream>
+#include <sstream>
 
 namespace Utils {
 
@@ -54,8 +55,8 @@ namespace Utils {
 	}
 
 	// Standart brain result conderter from 5-element float vector to 2-elements int vector.
-	vector<int> convertBrainResult(vector<double>& brainResult) {
-		vector<int> res(2);
+	vector<double> convertBrainResult(vector<double>& brainResult) {
+		vector<double> res(2);
 		if (brainResult[0] > brainResult[1])
 			res[0] = 0;
 		else
@@ -146,4 +147,68 @@ namespace Utils {
 	double sigmoid(double const x) {
 		return 1 / (1 + exp(-x));
 	}
+
+	void printMatrixToFile(std::ofstream& file, matrix& matrix) {
+		size_t horizontalSize = matrix.size();
+		size_t verticalSize = matrix[0].size();
+
+
+		for (size_t i = 0; i < horizontalSize; i++) {
+			for (size_t j = 0; j < verticalSize; j++) {
+				file << matrix[i][j] << " ";
+			}
+			file << std::endl;
+		}
+	}
+
+	void printVectorToFile(std::ofstream& file, std::vector<double>& vector) {
+		size_t size = vector.size();
+		for (size_t i = 0; i < size; i++) {
+			file << vector[i] << " ";
+		}
+		file << std::endl;
+	}
+
+
+	size_t readNumber(std::ifstream& file) {
+		size_t number;
+		std::string currentLine;
+
+		getline(file, currentLine);
+		std::istringstream lineStream(currentLine);
+
+		lineStream >> number;
+		return number;
+	}
+
+	std::vector<double> readVector(std::ifstream& file, size_t size) {
+		std::string currentLine;
+		std::vector<double> vector = std::vector<double>(size);
+
+		getline(file, currentLine);
+		std::istringstream lineStream(currentLine);
+
+		for (int i = 0; i < size; i++) {
+			lineStream >> vector[i];
+		}
+
+
+		return vector;
+	}
+
+	matrix readMatrix(std::ifstream& file, size_t verticalSize, size_t horizontalSize) {
+		std::string currentLine;
+		matrix mat = Utils::createMatrix(verticalSize, horizontalSize);
+
+		for (int i = 0; i < horizontalSize; i++) {
+			getline(file, currentLine);
+			std::istringstream lineStream(currentLine);
+
+			for (int j = 0; j < verticalSize; j++) {
+				lineStream >> mat[i][j];
+			}
+		}
+		return mat;
+	}
 }
+

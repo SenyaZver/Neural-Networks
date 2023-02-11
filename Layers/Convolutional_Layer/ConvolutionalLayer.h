@@ -3,6 +3,7 @@
 #include <iostream>
 #include <random>
 #include "../../Utils.h"
+#include "LoadingConvData.h"
 
 
 //rushed code, fix handling different amount of filters
@@ -45,6 +46,8 @@ public:
 
 	void mutate(double weightChangeLimit, double chance);
 
+	void save(std::ofstream& file);
+	static ConvolutionalLayer load(std::string filename);
 
 	size_t getFilterSize() {
 		return this->filterSize;
@@ -66,6 +69,9 @@ public:
 	Utils::matrix getBias() {
 		return bias;
 	}
+
+private:
+	static LoadingConvData readConvDataFromFile(std::ifstream& file);
 
 
 };

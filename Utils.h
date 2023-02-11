@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <fstream>
 
 using std::vector;
 
@@ -12,7 +13,7 @@ namespace Utils {
 	template <typename T>
 	size_t getMaxVectorIndex(vector<T> v, size_t from, size_t to);
 
-	vector<int> convertBrainResult(vector<double>& brainResult);
+	vector<double> convertBrainResult(vector<double>& brainResult);
 
 	typedef std::vector<std::vector<double>> matrix;
 	typedef std::vector<std::vector<size_t>> intMatrix;
@@ -34,4 +35,11 @@ namespace Utils {
 	double getRandomNumber(double begin, double end);
 
 	double sigmoid(double const x);
+	
+	void printMatrixToFile(std::ofstream& file, matrix& matrix);
+	void printVectorToFile(std::ofstream& file, std::vector<double>& vector);
+
+	size_t readNumber(std::ifstream& file);
+	std::vector<double> readVector(std::ifstream& file, size_t size);
+	matrix readMatrix(std::ifstream& file, size_t verticalSize, size_t horizontalSize);
 }
