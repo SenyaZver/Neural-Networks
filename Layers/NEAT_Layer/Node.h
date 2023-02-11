@@ -8,8 +8,11 @@ class Node
 	size_t number;
 	double currentValue = 0;
 
+	//temp
+public:
 	std::vector<Connection> inputs = std::vector<Connection>();
 	std::vector<Connection> outputs = std::vector<Connection>();
+
 public:
 	Node(size_t number) : number(number), currentValue(0) {}
 

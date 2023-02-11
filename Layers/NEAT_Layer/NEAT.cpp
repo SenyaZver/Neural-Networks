@@ -9,8 +9,6 @@
 
 std::vector<double> NEAT::propogate(std::vector<double>& input)
 {
-
-
 	if (input.size() != this->inputIndexes.size()) {
 		std::cout << "NEAT input size is wrong" << std::endl;
 		return std::vector<double>();
@@ -177,12 +175,15 @@ void NEAT::save(std::ofstream& file)
 		file << this->outputIndexes[i] << std::endl;
 	}
 
+	file << "neatConnections" << std::endl;
+
 	for (auto gene : this->genes) {
 
 		for (auto& connection : gene.outputs) {
 			file << gene.number << " " << connection.output << " " << connection.weight << std::endl;
 		}
 	}
+	file << "neatConnectionsEnd" << std::endl;
 
 }
 
@@ -197,89 +198,78 @@ NEAT NEAT::load(std::string filename)
 
 
 	std::string currentLine;
-	size_t genesAmount;
 
 	NEAT loadedBrain;
 
-
-	genesAmount = Utils::readNumber(file);
-
-	std::cout << genesAmount << std::endl;
-
-	for (size_t i = 0; i < genesAmount; i++) {
-		loadedBrain.genes.push_back(Node(i));
-	}
-
-	getline(file, currentLine);
-	std::istringstream iss(currentLine);
-
-	std::string temp;
-	iss >> temp;
+	while (getline(file, currentLine)) {
+		if (currentLine == "genesAmount") {
+			loadedBrain.size = Utils::readNumber(file);
 
 
-	if (temp == "inputSize") {
-		size_t inputSize = Utils::readNumber(file);
-
-		std::cout << inputSize << std::endl;
-
-
-
-		for (size_t i = 0; i < inputSize; i++) {
-			size_t index = Utils::readNumber(file);
-			loadedBrain.inputIndexes.push_back(index);
+			for (size_t i = 0; i < loadedBrain.size; i++) {
+				loadedBrain.genes.push_back(Node(i));
+			}
 		}
-		
-	}
-	getline(file, currentLine);
-	iss = std::istringstream(currentLine);
-	iss >> temp;
+		else if (currentLine == "inputSize") {
+
+			size_t inputSize = Utils::readNumber(file);
 
 
+			for (size_t i = 0; i < inputSize; i++) {
+				size_t index = Utils::readNumber(file);
 
-	if (temp == "hiddenSize") {
+				loadedBrain.inputIndexes.push_back(index);
+			}
 
-		size_t hiddenSize = Utils::readNumber(file);
-		
-		for (size_t i = 0; i < hiddenSize; i++) {
-			size_t index = Utils::readNumber(file);
-			loadedBrain.hiddenIndexes.push_back(index);
 		}
-	}
+		else if (currentLine == "hiddenSize") {
+			size_t hiddenSize = Utils::readNumber(file);
 
-	getline(file, currentLine);
-	iss = std::istringstream(currentLine);
-	iss >> temp;
 
-	if (temp == "outputSize") {
-		size_t outputSize = Utils::readNumber(file);
-		
-		for (size_t i = 0; i < outputSize; i++) {
-			size_t index = Utils::readNumber(file);
-			loadedBrain.outputIndexes.push_back(index);
+			for (size_t i = 0; i < hiddenSize; i++) {
+				size_t index = Utils::readNumber(file);
+
+				loadedBrain.hiddenIndexes.push_back(index);
+			}
+
 		}
+		else if (currentLine == "outputSize") {
+			size_t outputSize = Utils::readNumber(file);
+
+
+			for (size_t i = 0; i < outputSize; i++) {
+				size_t index = Utils::readNumber(file);
+
+				loadedBrain.outputIndexes.push_back(index);
+			}
+		}
+
+		else if (currentLine == "neatConnections") {
+			while(true) {
+				getline(file, currentLine);
+				if (currentLine == "neatConnectionsEnd") {
+					break;
+				}
+				std::istringstream lineStream(currentLine);
+
+				size_t inputIndex;
+				size_t outputIndex;
+
+				double weight;
+
+				lineStream >> inputIndex;
+				lineStream >> outputIndex;
+				lineStream >> weight;
+
+
+				Node::connect(loadedBrain.genes[inputIndex], loadedBrain.genes[outputIndex], weight);
+			}
+		}
+
+
 	}
-
-
-	for (size_t i = 0; i < genesAmount; i++) {
-		getline(file, currentLine);
-		std::istringstream lineStream(currentLine);
-
-		size_t inputIndex;
-		size_t outputIndex;
-
-		double weight;
-
-		lineStream >> inputIndex;
-		lineStream >> outputIndex;
-		lineStream >> weight;
-
-		Node::connect(loadedBrain.genes[inputIndex], loadedBrain.genes[outputIndex], weight);
-	}
-
 	file.close();
-
-	loadedBrain.size = loadedBrain.genes.size();
-
+	
 
 	return loadedBrain;
 }

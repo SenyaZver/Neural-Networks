@@ -25,7 +25,7 @@ void ConvolutionalNeatTest() {
 	
 	test.save("D:\\screenshots\\test.txt");
 
-	
+
 	auto loaded = ConvNEAT_Brain();
 	loaded.load("D:\\screenshots\\test.txt");
 	result = loaded.feedForward(input, input, input);

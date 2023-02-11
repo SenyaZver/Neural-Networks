@@ -201,7 +201,9 @@ public:
 
 
 
-		NEAT test1 = NEAT::load("D:\\screenshots\\test.txt");
+		NEAT test1 = NEAT();
+		test1 = NEAT::load("D:\\screenshots\\test.txt");
+
 		result = test1.propogate(input);
 		std::cout << result[0] << std::endl;
 	}

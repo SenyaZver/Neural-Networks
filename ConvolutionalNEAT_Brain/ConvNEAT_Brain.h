@@ -73,6 +73,7 @@ public:
 		auto reshapeResult = reshape.propagate(convResult);
 		auto neatResult = neat.propogate(reshapeResult);
 
+
 		return Utils::convertBrainResult(neatResult);
 	}
 
@@ -105,7 +106,6 @@ public:
 
 
 
-
 		this->conv.save(file);
 		this->reshape.save(file);
 		this->neat.save(file);
@@ -117,6 +117,7 @@ public:
 		ReshapeLayer reshape = ReshapeLayer::load(filename);
 		ConvolutionalLayer conv = ConvolutionalLayer::load(filename);
 		NEAT neat = NEAT::load(filename);
+
 
 		this->conv = conv;
 		this->reshape = reshape;
