@@ -10,13 +10,11 @@ These Neural Networks do not use backward propogation to learn. Instead, they us
 Currently implemented:
 - Perceptron Neural Network
 - Convolutional Neural Network
-
-Work in progress: 
 - NEAT Layer
   - There are two versions: the old one, which wasn't finished and the new one, that has a better architecture, better performance and a clearer code.
-  - Most of the logic is done, an algorithm for propogating is created and implemented.
-  - Currently working on fixing mutation algorithms
 - Convolutional-NEAT Neural Network
+
+Work in progress: 
 - Testing the aformentioned architectures to see, how well they perform relative to each other.
 - Advanced genetic algorithms
 - Refactoring code to make it easier to expand and edit. Mainly, making it possible to create Neural Networks without a hardcoded architecture.
