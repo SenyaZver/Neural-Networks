@@ -97,20 +97,20 @@ std::vector<double> NEAT::propogate(std::vector<double>& input)
 void NEAT::createSingleLayerPerceptron(size_t inputSize, size_t hiddenSize, size_t outputSize)
 {
 	for (int i = 0; i < inputSize; i++) {
-		auto inputGene = new Node(i);
-		this->genes.push_back(*inputGene);
+		auto inputGene = Node(i);
+		this->genes.push_back(inputGene);
 		this->inputIndexes.push_back(i);
 	}
 
 	for (int i = inputSize; i < inputSize + hiddenSize; i++) {
-		auto hiddenGene = new Node(i);
-		this->genes.push_back(*hiddenGene);
+		auto hiddenGene = Node(i);
+		this->genes.push_back(hiddenGene);
 		this->hiddenIndexes.push_back(i);
 	}
 
 	for (int i = inputSize + hiddenSize; i < inputSize + hiddenSize + outputSize; i++) {
-		auto outputGene = new Node(i);
-		this->genes.push_back(*outputGene);
+		auto outputGene = Node(i);
+		this->genes.push_back(outputGene);
 		this->outputIndexes.push_back(i);
 	}
 
@@ -324,11 +324,11 @@ void NEAT::addHiddenGene()
 		//local index
 		size_t InputGene = Utils::getRandomNumber(0, eligebleInputs.size() - 1);
 
-		Node* inputGene = &genes[eligebleInputs[InputGene]];
+		Node inputGene = genes[eligebleInputs[InputGene]];
 		
 
 		//actual indexes
-		auto outputsForChosenGene = inputGene->getOutputGenesIndexes();
+		auto outputsForChosenGene = inputGene.getOutputGenesIndexes();
 
 
 		if (outputsForChosenGene.size() == 0) {
@@ -341,15 +341,15 @@ void NEAT::addHiddenGene()
 			
 			size_t outputGeneNumber = outputsForChosenGene[temp];
 
-			double oldWeight = Node::disconnect(*inputGene, this->genes[outputGeneNumber]);
+			double oldWeight = Node::disconnect(inputGene, this->genes[outputGeneNumber]);
 			
-			Node* newGene = new Node(this->size);
+			Node newGene = Node(this->size);
 			this->size++;
 
-			Node::connect(*inputGene, *newGene, oldWeight);
-			Node::connect(*newGene, genes[outputGeneNumber], 1);
+			Node::connect(inputGene, newGene, oldWeight);
+			Node::connect(newGene, genes[outputGeneNumber], 1);
 
-			genes.push_back(*newGene);
+			genes.push_back(newGene);
 
 			break;
 		}

@@ -19,32 +19,32 @@ public:
 
 	static void connect(Node& inputGene, Node& outputGene, double weight) {
 
-		auto newConnection = new Connection(inputGene.number, outputGene.number, weight);
-		inputGene.outputs.push_back(*newConnection);
-		outputGene.inputs.push_back(*newConnection);
+		auto newConnection = Connection(inputGene.number, outputGene.number, weight);
+		inputGene.outputs.push_back(newConnection);
+		outputGene.inputs.push_back(newConnection);
 
 	}
 
 	std::vector<size_t> getOutputGenesIndexes() {
-		auto outputGenes = new std::vector<size_t>();
+		auto outputGenes = std::vector<size_t>();
 		for (auto& connection : outputs) {
 			auto gene = connection.output;
 
-			outputGenes->push_back(gene);
+			outputGenes.push_back(gene);
 		}
 
-		return *outputGenes;
+		return outputGenes;
 	}
 
 	std::vector<size_t> getInputGenesIndexes() {
-		auto inputGenes = new std::vector<size_t>();
+		auto inputGenes = std::vector<size_t>();
 		for (auto& connection : inputs) {
 			auto gene = connection.input;
 
-			inputGenes->push_back(gene);
+			inputGenes.push_back(gene);
 		}
 
-		return *inputGenes;
+		return inputGenes;
 	}
 
 	size_t getNumber() {

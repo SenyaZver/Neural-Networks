@@ -131,15 +131,12 @@
     <ClInclude Include="BrainLoader.h" />
     <ClInclude Include="Layers\Dense_Layer\LoadingDenseData.h" />
     <ClInclude Include="Layers\NEAT_Layer\Connection.h" />
-    <ClInclude Include="Layers\Old_NEAT_Layer\Connection_gene.h" />
     <ClInclude Include="Layers\Convolutional_Layer\ConvolutionalLayer.h" />
     <ClInclude Include="ConvolutionalBrain\ConvolutionBrain.h" />
     <ClInclude Include="Layers\Dense_Layer\DenseLayer.h" />
     <ClInclude Include="Layers\Convolutional_Layer\LoadingConvData.h" />
     <ClInclude Include="Layers\Reshape_Layer\ReshapeLayer.h" />
     <ClInclude Include="ConvolutionalNEAT_Brain\ConvNEAT_Brain.h" />
-    <ClInclude Include="Layers\Old_NEAT_Layer\NEAT_layer.h" />
-    <ClInclude Include="Layers\Old_NEAT_Layer\Node_gene.h" />
     <ClInclude Include="Layers\NEAT_Layer\NEAT.h" />
     <ClInclude Include="Layers\NEAT_Layer\Node.h" />
     <ClInclude Include="PercepetronBrain\LoadingPerceptronData.h" />
@@ -148,18 +145,13 @@
     <ClInclude Include="Tests\ConvolutionalNeatTest.h" />
     <ClInclude Include="Tests\New_NEAT_tests\NewNEAT_Tester.h" />
     <ClInclude Include="Tests\ConvolutionTest.h" />
-    <ClInclude Include="Tests\Old_NEAT_tests\NEAT_copy_Test.h" />
-    <ClInclude Include="Tests\Old_NEAT_tests\NEAT_layer_Test.h" />
     <ClInclude Include="Tests\PerceptronTest.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Layers\Old_NEAT_Layer\Connection_gene.cpp" />
     <ClCompile Include="Layers\Convolutional_Layer\ConvolutionalLayer.cpp" />
     <ClCompile Include="Layers\Dense_Layer\DenseLayer.cpp" />
-    <ClCompile Include="Layers\Old_NEAT_Layer\NEAT_layer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Layers\Old_NEAT_Layer\Node_gene.cpp" />
     <ClCompile Include="Layers\NEAT_Layer\NEAT.cpp" />
     <ClCompile Include="PercepetronBrain\PerceptronBrain.cpp" />
     <ClCompile Include="Utils.cpp" />

@@ -16,4 +16,47 @@ C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NE
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(372,77): warning C4244: аргумент: преобразование "unsigned __int64" в "double", возможна потеря данных
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(372,27): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
 C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\NEAT_Layer\NEAT.cpp(393,19): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+  main.cpp
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(19,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(20,33): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Brain.h(22,5): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(24,45): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Utils.h(26,39): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(30,42): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(33,41): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Convolutional_Layer\ConvolutionalLayer.h(33,70): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\Layers\Reshape_Layer\ReshapeLayer.h(71,51): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(51,54): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(52,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalBrain\ConvolutionBrain.h(53,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(91): warning C4114: Множественное использование одного и того же квалификатора типа.
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(91,13): warning C4114: Множественное использование одного и того же квалификатора типа.
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\BrainLoader.h(96,33): warning C4114: Множественное использование одного и того же квалификатора типа.
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(30,31): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(31,33): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\PercepetronBrain\PerceptronBrain.h(33,5): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(68,23): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(69,23): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(71,2): warning C4227: устаревший элемент: пропуск квалификаторов для ссылки
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(46,62): warning C4244: аргумент: преобразование "_Ty" в "size_t", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(46,51): warning C4244: аргумент: преобразование "_Ty" в "size_t", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(46,40): warning C4244: аргумент: преобразование "_Ty" в "size_t", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Sashk\source\repos\Neural_Networks\Neural_Networks\ConvolutionalNEAT_Brain\ConvNEAT_Brain.h(46,29): warning C4244: аргумент: преобразование "_Ty" в "size_t", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
+  Создание кода...
   Neural_Networks.vcxproj -> C:\Users\Sashk\source\repos\Neural_Networks\x64\Debug\Neural_Networks.exe
